@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\Local Driving License\frmInsertUpdateLocalDrivingLicenseApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Local Driving License\frmInsertUpdateLocalDrivingLicenseApplication.Designer.cs">
+      <DependentUpon>frmInsertUpdateLocalDrivingLicenseApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Local Driving License\frmListsLocalDrivingLicenseApplications.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     <Compile Include="User\frmUserDetails.Designer.cs">
       <DependentUpon>frmUserDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Applications\Local Driving License\frmInsertUpdateLocalDrivingLicenseApplication.resx">
+      <DependentUpon>frmInsertUpdateLocalDrivingLicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\Local Driving License\frmListsLocalDrivingLicenseApplications.resx">
       <DependentUpon>frmListsLocalDrivingLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
