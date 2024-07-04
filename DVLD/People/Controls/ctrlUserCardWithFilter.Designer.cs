@@ -83,6 +83,7 @@
             // 
             // cbFilterColumns
             // 
+            this.cbFilterColumns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterColumns.FormattingEnabled = true;
             this.cbFilterColumns.Items.AddRange(new object[] {
             "NationalNo",
