@@ -7,3 +7,12 @@ C:\Container\Business\obj\Debug\DVLD Business Layer.csproj.CoreCompileInputs.cac
 C:\Container\Business\obj\Debug\DVLD Business Layer.csproj.CopyComplete
 C:\Container\Business\obj\Debug\Business.dll
 C:\Container\Business\obj\Debug\Business.pdb
+C:\Container\DVLD GIthup\Business\bin\Debug\Business.dll
+C:\Container\DVLD GIthup\Business\bin\Debug\Business.pdb
+C:\Container\DVLD GIthup\Business\bin\Debug\DVLD DataAccess Layer.dll
+C:\Container\DVLD GIthup\Business\bin\Debug\DVLD DataAccess Layer.pdb
+C:\Container\DVLD GIthup\Business\obj\Debug\DVLD Business Layer.csproj.AssemblyReference.cache
+C:\Container\DVLD GIthup\Business\obj\Debug\DVLD Business Layer.csproj.CoreCompileInputs.cache
+C:\Container\DVLD GIthup\Business\obj\Debug\DVLD Business Layer.csproj.CopyComplete
+C:\Container\DVLD GIthup\Business\obj\Debug\Business.dll
+C:\Container\DVLD GIthup\Business\obj\Debug\Business.pdb

@@ -71,7 +71,6 @@ namespace DVLD.Applications.Local_Driving_License
             if ((IndexsForFilterColumns)cbFilterBy.SelectedIndex == IndexsForFilterColumns.NoFilter)
             {
                 txtFilterValue.Visible = false;
-                _FilterListLocalLicenseApplication();
             }
             else
             {

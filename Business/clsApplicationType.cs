@@ -35,9 +35,8 @@ namespace Business
             string ApplicatonTypeFees = "", ApplicatonTypeTitle = "";
             if (clsApplicationTypesData.Find(ApplicatonTypeID, ref ApplicatonTypeTitle, ref ApplicatonTypeFees))
                 return new clsApplicationType(ApplicatonTypeID, ApplicatonTypeTitle, ApplicatonTypeFees);
-
+          
             return null;
-
         }
 
         private bool _Update()

@@ -14,6 +14,10 @@ namespace Business
         public string LastaName { get; set; }
         public string SectoundName { get; set; }
         public string ThirdName { get; set; }
+        public string FullName
+        {
+            get { return FirstaName + ' ' + SectoundName + ' ' + LastaName + ' ' + LastaName; }
+        }
         public string NationalNo { get; set; }
         public DateTime DataOfBirth { get; set; }
         public short Gender { get; set; }
