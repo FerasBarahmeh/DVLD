@@ -41,7 +41,7 @@ namespace DVLD_DataAccess_Layer
 
             return dt;
         }
-        public static bool Find(int ApplicationTypeID, ref string ApplicationTypeTitle, ref string ApplicatonTypeFees )
+        public static bool Find(int ApplicationTypeID, ref string ApplicationTypeTitle, ref float ApplicatonTypeFees )
         {
             bool IsFound = false;
 
@@ -61,9 +61,11 @@ namespace DVLD_DataAccess_Layer
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
+                  
                     IsFound = true;
                     ApplicationTypeTitle = reader["ApplicationTypeTitle"].ToString();
-                    ApplicatonTypeFees = reader["ApplicationFees"].ToString();
+                    if (float.TryParse(reader["ApplicationFees"].ToString(), out float value))
+                        ApplicatonTypeFees = value;
                 }
                 reader.Close();
             }
@@ -75,7 +77,7 @@ namespace DVLD_DataAccess_Layer
 
             return IsFound;
         }
-        public static bool Update(int ApplicationTypeID, string ApplicationTypeTitle, string ApplicationFees)
+        public static bool Update(int ApplicationTypeID, string ApplicationTypeTitle, float ApplicationFees)
         {
             int RowAffected = 0;
 

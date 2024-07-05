@@ -27,7 +27,7 @@ namespace DVLD.ApplicationTypes
         {
             lblApplicationTypeID.Text = _ApplicatonTypeID.ToString();
             txtTitle.Text = _ApplicationType.ApplicatonTypeTitle;
-            txtFees.Text = _ApplicationType.ApplicationTypeFees;
+            txtFees.Text = _ApplicationType.ApplicationTypeFees.ToString();
         }
 
         private void frmEditApplicationType_Load(object sender, EventArgs e)
@@ -87,7 +87,9 @@ namespace DVLD.ApplicationTypes
             }
 
             _ApplicationType.ApplicatonTypeTitle = txtTitle.Text.Trim();
-            _ApplicationType.ApplicationTypeFees = txtFees.Text.Trim();
+            if (float.TryParse(txtFees.Text, out float value))
+                _ApplicationType.ApplicationTypeFees = value;
+
             if (_ApplicationType.Save())
             {
                 MessageBox.Show("Success save changes", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -9,20 +9,20 @@ namespace Business
         private _enMode _Mode;
         public int ApplicatonTypeID;
         public string ApplicatonTypeTitle;
-        public string ApplicationTypeFees;
+        public float ApplicationTypeFees;
 
         public clsApplicationType() 
         {
             this.ApplicatonTypeID = -1;
             this.ApplicatonTypeTitle = string.Empty;
-            this.ApplicationTypeFees = string.Empty;
+            this.ApplicationTypeFees = float.MinValue;
             _Mode = _enMode.Add;
         }
-        public clsApplicationType(int ApplicatonTypeID, string ApplicatonTypeTitle, string ApplicatonTypeFees)
+        public clsApplicationType(int ApplicatonTypeID, string ApplicatonTypeTitle, float ApplicationTypeFees)
         {
             this.ApplicatonTypeID = ApplicatonTypeID;
             this.ApplicatonTypeTitle = ApplicatonTypeTitle;
-            this.ApplicationTypeFees = ApplicatonTypeFees;
+            this.ApplicationTypeFees = ApplicationTypeFees;
             _Mode = _enMode.Update;
         }
         public static DataTable All()
@@ -32,9 +32,9 @@ namespace Business
 
         public static clsApplicationType Find(int ApplicatonTypeID)
         {
-            string ApplicatonTypeFees = "", ApplicatonTypeTitle = "";
-            if (clsApplicationTypesData.Find(ApplicatonTypeID, ref ApplicatonTypeTitle, ref ApplicatonTypeFees))
-                return new clsApplicationType(ApplicatonTypeID, ApplicatonTypeTitle, ApplicatonTypeFees);
+            string ApplicatonTypeTitle  = ""; float ApplicationTypeFees = float.MinValue;
+            if (clsApplicationTypesData.Find(ApplicatonTypeID, ref ApplicatonTypeTitle, ref ApplicationTypeFees))
+                return new clsApplicationType(ApplicatonTypeID, ApplicatonTypeTitle, ApplicationTypeFees);
           
             return null;
         }

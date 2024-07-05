@@ -40,5 +40,84 @@ namespace DVLD_DataAccess_Layer
 
             return dt;
         }
+
+        public static int Insert(
+            int ApplicationID, 
+            int LicenseClassID
+        )
+        {
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = @"
+                INSERT INTO LocalDrivingLicenseApplications
+                           (ApplicationID,
+		                   LicenseClassID)
+                VALUES
+                    (@ApplicationID
+                    ,@LicenseClassID);
+
+                SELECT SCOPE_IDENTITY();
+            ";
+
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            cmd.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+            int LocalDrivingLicenseApplication = -1;
+            try
+            {
+                conn.Open();
+                object res = cmd.ExecuteScalar();
+                if (res != null && int.TryParse(res.ToString(), out int insertedID))
+                    LocalDrivingLicenseApplication = insertedID;
+            }
+            catch (Exception) { throw; }
+            finally { conn.Close(); }
+
+            return LocalDrivingLicenseApplication;
+        }
+
+        public static bool Find(
+            int LocalDrivingLicenseApplicationID,
+            ref int ApplicationID, 
+            ref int LicenseClassID
+        )
+        {
+            bool IsFound = false;
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = @"
+                SELECT 
+                    * 
+                FROM 
+                    LocalDrivingLicenseApplications 
+                WHERE 
+                    LocalDrivingLicenseApplicationID=@LocalDrivingLicenseApplicationID
+            ";
+
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    IsFound = true;
+                    ApplicationID = (int)reader["ApplicationID"];
+                    LicenseClassID = (int)reader["LicenseClassID"];
+                }
+                else IsFound = false;
+                reader.Close();
+            }
+            catch (Exception)
+            {
+                IsFound = false;
+                throw;
+            }
+            finally { conn.Close(); }
+
+
+            return IsFound;
+        }
     }
 }

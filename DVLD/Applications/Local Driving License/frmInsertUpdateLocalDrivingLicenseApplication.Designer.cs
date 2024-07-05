@@ -34,6 +34,7 @@
             this.tcInsertUpdateLocalDrivingLicenseApplication = new System.Windows.Forms.TabControl();
             this.tpPersonInformation = new System.Windows.Forms.TabPage();
             this.btnNextStep = new System.Windows.Forms.Button();
+            this.ctrlUserCardWithFilter = new DVLD.People.Controls.ctrlUserCardWithFilter();
             this.tpApplicationInformation = new System.Windows.Forms.TabPage();
             this.lblCreatedBy = new System.Windows.Forms.Label();
             this.lblApplicationDate = new System.Windows.Forms.Label();
@@ -44,13 +45,12 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblUserID = new System.Windows.Forms.Label();
+            this.lblLocalDrivingLicebseApplicationID = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.ctrlUserCardWithFilter = new DVLD.People.Controls.ctrlUserCardWithFilter();
             this.tcInsertUpdateLocalDrivingLicenseApplication.SuspendLayout();
             this.tpPersonInformation.SuspendLayout();
             this.tpApplicationInformation.SuspendLayout();
@@ -98,6 +98,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // tcInsertUpdateLocalDrivingLicenseApplication
             // 
@@ -136,6 +137,15 @@
             this.btnNextStep.UseVisualStyleBackColor = true;
             this.btnNextStep.Click += new System.EventHandler(this.btnNextStep_Click);
             // 
+            // ctrlUserCardWithFilter
+            // 
+            this.ctrlUserCardWithFilter.AutoSize = true;
+            this.ctrlUserCardWithFilter.BackColor = System.Drawing.Color.White;
+            this.ctrlUserCardWithFilter.Location = new System.Drawing.Point(24, 15);
+            this.ctrlUserCardWithFilter.Name = "ctrlUserCardWithFilter";
+            this.ctrlUserCardWithFilter.Size = new System.Drawing.Size(1167, 530);
+            this.ctrlUserCardWithFilter.TabIndex = 0;
+            // 
             // tpApplicationInformation
             // 
             this.tpApplicationInformation.BackColor = System.Drawing.Color.White;
@@ -148,7 +158,7 @@
             this.tpApplicationInformation.Controls.Add(this.pictureBox6);
             this.tpApplicationInformation.Controls.Add(this.pictureBox5);
             this.tpApplicationInformation.Controls.Add(this.label1);
-            this.tpApplicationInformation.Controls.Add(this.lblUserID);
+            this.tpApplicationInformation.Controls.Add(this.lblLocalDrivingLicebseApplicationID);
             this.tpApplicationInformation.Controls.Add(this.label5);
             this.tpApplicationInformation.Controls.Add(this.label4);
             this.tpApplicationInformation.Controls.Add(this.label3);
@@ -200,6 +210,7 @@
             this.cbLicenseClass.Name = "cbLicenseClass";
             this.cbLicenseClass.Size = new System.Drawing.Size(267, 24);
             this.cbLicenseClass.TabIndex = 141;
+            this.cbLicenseClass.SelectedIndexChanged += new System.EventHandler(this.cbLicenseClass_SelectedIndexChanged);
             // 
             // pictureBox3
             // 
@@ -253,17 +264,17 @@
             this.label1.Text = "Created By";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblUserID
+            // lblLocalDrivingLicebseApplicationID
             // 
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.BackColor = System.Drawing.Color.White;
-            this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.ForeColor = System.Drawing.Color.Blue;
-            this.lblUserID.Location = new System.Drawing.Point(619, 58);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(36, 25);
-            this.lblUserID.TabIndex = 9;
-            this.lblUserID.Text = "??";
+            this.lblLocalDrivingLicebseApplicationID.AutoSize = true;
+            this.lblLocalDrivingLicebseApplicationID.BackColor = System.Drawing.Color.White;
+            this.lblLocalDrivingLicebseApplicationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLocalDrivingLicebseApplicationID.ForeColor = System.Drawing.Color.Blue;
+            this.lblLocalDrivingLicebseApplicationID.Location = new System.Drawing.Point(619, 58);
+            this.lblLocalDrivingLicebseApplicationID.Name = "lblLocalDrivingLicebseApplicationID";
+            this.lblLocalDrivingLicebseApplicationID.Size = new System.Drawing.Size(36, 25);
+            this.lblLocalDrivingLicebseApplicationID.TabIndex = 9;
+            this.lblLocalDrivingLicebseApplicationID.Text = "??";
             // 
             // label5
             // 
@@ -323,15 +334,6 @@
             this.label2.Text = "D.L Application ID";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ctrlUserCardWithFilter
-            // 
-            this.ctrlUserCardWithFilter.AutoSize = true;
-            this.ctrlUserCardWithFilter.BackColor = System.Drawing.Color.White;
-            this.ctrlUserCardWithFilter.Location = new System.Drawing.Point(24, 15);
-            this.ctrlUserCardWithFilter.Name = "ctrlUserCardWithFilter";
-            this.ctrlUserCardWithFilter.Size = new System.Drawing.Size(1167, 530);
-            this.ctrlUserCardWithFilter.TabIndex = 0;
-            // 
             // frmInsertUpdateLocalDrivingLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,6 +346,7 @@
             this.Controls.Add(this.tcInsertUpdateLocalDrivingLicenseApplication);
             this.Name = "frmInsertUpdateLocalDrivingLicenseApplication";
             this.Text = "Insert | Update Local Driving License Application";
+            this.Load += new System.EventHandler(this.frmInsertUpdateLocalDrivingLicenseApplication_Load);
             this.tcInsertUpdateLocalDrivingLicenseApplication.ResumeLayout(false);
             this.tpPersonInformation.ResumeLayout(false);
             this.tpPersonInformation.PerformLayout();
@@ -369,7 +372,7 @@
         private System.Windows.Forms.Button btnNextStep;
         private People.Controls.ctrlUserCardWithFilter ctrlUserCardWithFilter;
         private System.Windows.Forms.TabPage tpApplicationInformation;
-        private System.Windows.Forms.Label lblUserID;
+        private System.Windows.Forms.Label lblLocalDrivingLicebseApplicationID;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
