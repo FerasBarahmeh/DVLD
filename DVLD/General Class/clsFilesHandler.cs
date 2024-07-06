@@ -6,7 +6,7 @@ namespace DVLD.General_Class
 {
     public static class clsFilesHandler
     {
-        private static string ProjectFilesPath = "C:\\Container\\DVLD Githup\\Images\\";
+        private static string ProjectFilesPath = "C:\\Container\\DVLD\\Images\\";
 
         public static bool CreateFolderIfNotExist(string path)
         {
