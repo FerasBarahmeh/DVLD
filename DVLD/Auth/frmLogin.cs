@@ -1,14 +1,6 @@
 ﻿using Business;
 using DVLD.General_Class;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DVLD.Auth
@@ -22,7 +14,7 @@ namespace DVLD.Auth
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            
+
             if (cbRememperMe.Checked)
             {
                 clsAuth.SetParameters(out string Username, out string Password);
@@ -37,15 +29,15 @@ namespace DVLD.Auth
             string Password = txtPassword.Text.Trim(), Username = txtUsername.Text.Trim();
             clsUser User = clsUser.FindUserByAuthRequirment(Username, Password);
 
-            if (User == null )
+            if (User == null)
             {
                 MessageBox.Show("Not found this username or password in credential", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (! User.IsActive)
+            if (!User.IsActive)
             {
-                MessageBox.Show($"{Username} not active, pls contact with mangment", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"{Username} not active, pls contact with management", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -62,9 +54,7 @@ namespace DVLD.Auth
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
-
-        
     }
 }

@@ -33,7 +33,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.cbFilterColumns = new System.Windows.Forms.ComboBox();
-            this.ctrlPersoneCard = new DVLD.People.Controls.ctrlPersoneCard();
+            this.ctrlPersoneCard = new DVLD.People.Controls.ctrlPersonCard();
             this.gbFilter.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,7 +120,7 @@
 
         #endregion
 
-        private ctrlPersoneCard ctrlPersoneCard;
+        private ctrlPersonCard ctrlPersoneCard;
         private System.Windows.Forms.GroupBox gbFilter;
         private System.Windows.Forms.ComboBox cbFilterColumns;
         private System.Windows.Forms.TextBox txtFilterValue;

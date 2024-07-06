@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblDetailsPerso = new System.Windows.Forms.Label();
-            this.ctrlPersoneInformation = new DVLD.People.Controls.ctrlPersoneCard();
+            this.ctrlPersoneInformation = new DVLD.People.Controls.ctrlPersonCard();
             this.SuspendLayout();
             // 
             // lblDetailsPerso
@@ -68,6 +68,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblDetailsPerso;
-        private Controls.ctrlPersoneCard ctrlPersoneInformation;
+        private Controls.ctrlPersonCard ctrlPersoneInformation;
     }
 }

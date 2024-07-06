@@ -60,7 +60,7 @@ namespace DVLD.People.Controls
 
         public void ResetLabelsPersonCard()
         {
-            ctrlPersoneCard.ResetLables();
+            ctrlPersoneCard.ResetLabels();
         }
 
         public void LoadPersonalCardInformation(int PerosnID)

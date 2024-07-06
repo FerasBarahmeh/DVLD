@@ -32,7 +32,7 @@ namespace DVLD.User.Controls
             User = clsUser.Find(UserID);
             if (User == null)
             {
-                ctrlPersoneCard.ResetLables();
+                ctrlPersoneCard.ResetLabels();
                 MessageBox.Show("Not find user has ID = " + UserID, "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }

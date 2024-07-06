@@ -1,13 +1,6 @@
 ﻿using Business;
 using DVLD.General_Class;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DVLD.Tests
@@ -23,7 +16,7 @@ namespace DVLD.Tests
             _Test = clsTestTypes.Find(_TestID);
         }
 
-        private void _FillControleValues()
+        private void _FillControlValues()
         {
             lblTestTypeID.Text = _TestID.ToString();
             txtTitle.Text = _Test.TestTypeTitle;
@@ -33,7 +26,7 @@ namespace DVLD.Tests
 
         private void frmEditTest_Load(object sender, EventArgs e)
         {
-            _FillControleValues();
+            _FillControlValues();
         }
         private void _FireError(Control sender, string ErrorMessage)
         {
@@ -43,7 +36,7 @@ namespace DVLD.Tests
                 errorProvider.SetError(sender, null);
         }
 
-        private bool _TextBoxTitlValidating()
+        private bool _TextBoxTitleValidating()
         {
             Control Input = txtTitle;
             string ErrorMessage = "";
@@ -85,7 +78,7 @@ namespace DVLD.Tests
         private bool _Validated()
         {
             bool flag;
-            flag = _TextBoxTitlValidating();
+            flag = _TextBoxTitleValidating();
             flag &= _TextBoxFeesValidating();
             flag &= _TextBoxDescriptionValidating();
 
@@ -96,7 +89,7 @@ namespace DVLD.Tests
         {
             if (!_Validated())
             {
-                MessageBox.Show("Some inputs is not valid hover in icone to describe error", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some inputs is not valid hover in icon to describe error", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -108,7 +101,7 @@ namespace DVLD.Tests
                 MessageBox.Show("Success save changes", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             Close();
-           
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -6,19 +6,19 @@ using System.Windows.Forms;
 
 namespace DVLD.People.Controls
 {
-    public partial class ctrlPersoneCard : UserControl
+    public partial class ctrlPersonCard : UserControl
     {
         private clsPersone _Person = null;
         private int _ID = -1;
         public clsPersone Person { get { return _Person; } }
         public int ID { get { return _ID; } }
 
-        public ctrlPersoneCard()
+        public ctrlPersonCard()
         {
             InitializeComponent();
         }
 
-        public void ResetLables()
+        public void ResetLabels()
         {
             _ID = -1;
             lblFullName.Text = "???";
@@ -35,7 +35,7 @@ namespace DVLD.People.Controls
         private void _LoadImagePerson()
         {
             pbPersonImage.Image = _Person.Gender == 0 ? Resources.Male_512 : Resources.Female_512;
-            if (! string.IsNullOrEmpty(_Person.ImagePath))
+            if (!string.IsNullOrEmpty(_Person.ImagePath))
                 if (File.Exists(_Person.ImagePath))
                     pbPersonImage.ImageLocation = _Person.ImagePath;
                 else
@@ -62,7 +62,7 @@ namespace DVLD.People.Controls
 
             if (_Person == null)
             {
-                ResetLables();
+                ResetLabels();
                 MessageBox.Show("No Person With ID = " + ID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -75,7 +75,7 @@ namespace DVLD.People.Controls
 
             if (_Person == null)
             {
-                ResetLables();
+                ResetLabels();
                 MessageBox.Show("No Person With National No. = " + NationalNo, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

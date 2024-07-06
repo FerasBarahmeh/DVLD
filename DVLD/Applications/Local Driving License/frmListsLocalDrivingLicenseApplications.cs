@@ -10,7 +10,7 @@ namespace DVLD.Applications.Local_Driving_License
     {
         private DataTable _AllLocalLicenseApplication;
         private DataTable _dtLocalLicenseApplication;
-        enum IndexsForFilterColumns { NoFilter = 0, LocalDriverLicenseAppID = 1, NationalNo = 2, FullName = 3, Status = 4 }
+        enum IndexesForFilterColumns { NoFilter = 0, LocalDriverLicenseAppID = 1, NationalNo = 2, FullName = 3, Status = 4 }
 
         private static Dictionary<int, string> _FilterColumns = new Dictionary<int, string>
         {
@@ -24,8 +24,8 @@ namespace DVLD.Applications.Local_Driving_License
         public frmListsLocalDrivingLicenseApplications()
         {
             InitializeComponent();
-            _RegreshDGV();
-            _SetItemsToFilterColmunsComboBox();
+            __RefreshDGV();
+            _SetItemsToFilterColumnsComboBox();
         }
         private static void _SelectDGVNameAndWidthToEachColumn(ref DataGridView DGV)
         {
@@ -49,7 +49,7 @@ namespace DVLD.Applications.Local_Driving_License
             }
         }
 
-        private void _RegreshDGV()
+        private void __RefreshDGV()
         {
             _AllLocalLicenseApplication = clsLocalDrivingLicenseApplication.All();
             _dtLocalLicenseApplication = _AllLocalLicenseApplication;
@@ -59,7 +59,7 @@ namespace DVLD.Applications.Local_Driving_License
                 _SelectDGVNameAndWidthToEachColumn(ref dgvListLocalDrivingApplicationLicense);
         }
 
-        private void _SetItemsToFilterColmunsComboBox()
+        private void _SetItemsToFilterColumnsComboBox()
         {
             cbFilterBy.DataSource = new BindingSource(_FilterColumns, null);
             cbFilterBy.ValueMember = "Key";
@@ -68,7 +68,7 @@ namespace DVLD.Applications.Local_Driving_License
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((IndexsForFilterColumns)cbFilterBy.SelectedIndex == IndexsForFilterColumns.NoFilter)
+            if ((IndexesForFilterColumns)cbFilterBy.SelectedIndex == IndexesForFilterColumns.NoFilter)
             {
                 txtFilterValue.Visible = false;
             }
@@ -81,29 +81,29 @@ namespace DVLD.Applications.Local_Driving_License
         }
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            IndexsForFilterColumns SelectedIndexFilter = (IndexsForFilterColumns)cbFilterBy.SelectedIndex;
-            if (SelectedIndexFilter == IndexsForFilterColumns.LocalDriverLicenseAppID)
+            IndexesForFilterColumns SelectedIndexFilter = (IndexesForFilterColumns)cbFilterBy.SelectedIndex;
+            if (SelectedIndexFilter == IndexesForFilterColumns.LocalDriverLicenseAppID)
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
-        
+
         private void _FilterListLocalLicenseApplication()
         {
-            IndexsForFilterColumns SelectedFilterColmun = (IndexsForFilterColumns)cbFilterBy.SelectedIndex;
+            IndexesForFilterColumns SelectedFilterColumn = (IndexesForFilterColumns)cbFilterBy.SelectedIndex;
             string FilterString = "";
-            
-            if (SelectedFilterColmun == IndexsForFilterColumns.NoFilter || string.IsNullOrEmpty(txtFilterValue.Text))
+
+            if (SelectedFilterColumn == IndexesForFilterColumns.NoFilter || string.IsNullOrEmpty(txtFilterValue.Text))
             {
                 _dtLocalLicenseApplication.DefaultView.RowFilter = FilterString;
                 lblRecordsCount.Text = _dtLocalLicenseApplication.Rows.Count.ToString();
                 return;
             }
 
-            if (SelectedFilterColmun == IndexsForFilterColumns.LocalDriverLicenseAppID)
+            if (SelectedFilterColumn == IndexesForFilterColumns.LocalDriverLicenseAppID)
                 FilterString = "[{0}] = {1}";
             else
                 FilterString = "[{0}] LIKE '{1}%'";
 
-            _dtLocalLicenseApplication.DefaultView.RowFilter = string.Format(FilterString, _FilterColumns[(int)SelectedFilterColmun], txtFilterValue.Text.Trim());
+            _dtLocalLicenseApplication.DefaultView.RowFilter = string.Format(FilterString, _FilterColumns[(int)SelectedFilterColumn], txtFilterValue.Text.Trim());
             lblRecordsCount.Text = _dtLocalLicenseApplication.Rows.Count.ToString();
         }
         private void txtFilterValue_TextChanged(object sender, EventArgs e)

@@ -1,13 +1,6 @@
 ﻿using Business;
 using DVLD.General_Class;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DVLD.ApplicationTypes
@@ -15,24 +8,24 @@ namespace DVLD.ApplicationTypes
     public partial class frmEditApplicationType : Form
     {
         private clsApplicationType _ApplicationType;
-        private int _ApplicatonTypeID;
+        private int _ApplicationTypeID;
         public frmEditApplicationType(int applicatonTypeID)
         {
             InitializeComponent();
-            _ApplicatonTypeID = applicatonTypeID;
-            _ApplicationType = clsApplicationType.Find(_ApplicatonTypeID);
+            _ApplicationTypeID = applicatonTypeID;
+            _ApplicationType = clsApplicationType.Find(_ApplicationTypeID);
         }
 
-        private void _FillControleValues()
+        private void _FillControlValues()
         {
-            lblApplicationTypeID.Text = _ApplicatonTypeID.ToString();
+            lblApplicationTypeID.Text = _ApplicationTypeID.ToString();
             txtTitle.Text = _ApplicationType.ApplicatonTypeTitle;
             txtFees.Text = _ApplicationType.ApplicationTypeFees.ToString();
         }
 
         private void frmEditApplicationType_Load(object sender, EventArgs e)
         {
-            _FillControleValues();
+            _FillControlValues();
         }
 
         private void _FireError(Control sender, string ErrorMessage)
@@ -43,7 +36,7 @@ namespace DVLD.ApplicationTypes
                 errorProvider.SetError(sender, null);
         }
 
-        private bool _TextBoxTitlValidating()
+        private bool _TextBoxTitleValidating()
         {
             Control Input = txtTitle;
             string ErrorMessage = "";
@@ -72,7 +65,7 @@ namespace DVLD.ApplicationTypes
         private bool _Validated()
         {
             bool flag;
-            flag = _TextBoxTitlValidating();
+            flag = _TextBoxTitleValidating();
             flag &= _TextBoxFeesValidating();
 
             return flag;
@@ -80,7 +73,7 @@ namespace DVLD.ApplicationTypes
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (! _Validated())
+            if (!_Validated())
             {
                 MessageBox.Show("Some inputs is not valid hover in icone to describe error", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

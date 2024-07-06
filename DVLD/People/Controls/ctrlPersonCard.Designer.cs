@@ -1,6 +1,6 @@
 ﻿namespace DVLD.People.Controls
 {
-    partial class ctrlPersoneCard
+    partial class ctrlPersonCard
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlPersoneCard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlPersonCard));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gbPersonInformation = new System.Windows.Forms.GroupBox();
             this.pbPersonImage = new System.Windows.Forms.PictureBox();
