@@ -3,8 +3,6 @@ using DVLD_DataAccess_Layer;
 using System;
 using System.Data;
 using System.Windows.Forms;
-using static Business.clsApplication;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Business
 {
@@ -51,6 +49,7 @@ namespace Business
             this.ApplicationDate = ApplicationDate;
             this.LastStatusDate = LastStatusDate;
             this.ApplicationStatus = ApplicationStatus;
+            this.CreatedByInfo = clsUser.Find(CreatedByUserID);
             LicenseClassInfo = clsLicenseClass.Find(LicenseClassID);
             Mode = enMode.Update;
         }
@@ -100,7 +99,7 @@ namespace Business
             bool IsFound = clsLocalDrivingLicenseApplicationData.Find(LocalDrivingLicenseApplicationID, ref ApplicationID, ref LicenseClassID);
             if (IsFound)
             {
-               clsApplication Application = clsApplication.FindBaseApplicationByID(ApplicationID);
+               clsApplication Application = FindBaseApplicationByID(ApplicationID);
 
                 return new clsLocalDrivingLicenseApplication(
                     LocalDrivingLicenseApplicationID,

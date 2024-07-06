@@ -1,6 +1,5 @@
 ﻿using DVLD_DataAccess_Layer;
 using System;
-using System.Windows.Forms;
 
 namespace Business
 {
@@ -13,7 +12,7 @@ namespace Business
             RenewDrivingLicense = 2,
             ReplaceLostDrivingLicense = 3,
             ReplaceDamagedDrivingLicense = 4,
-            ReleaseDetainedDrivingLicsense = 5,
+            ReleaseDetainedDrivingLicense = 5,
             NewInternationalLicense = 6,
             RetakeTest = 7
         };
@@ -64,7 +63,6 @@ namespace Business
          DateTime ApplicationDate, int ApplicationTypeID,
           enApplicationStatus ApplicationStatus, DateTime LastStatusDate,
           float PaidFees, int CreatedByUserID)
-
         {
             this.ApplicationID = ApplicationID;
             this.ApplicationPersonID = ApplicantPersonID;
@@ -116,7 +114,7 @@ namespace Business
         {
 
             int ApplicationPersonID = -1, ApplicationTypeID = -1, CreatedByUserID = -1;
-            float PaidFees = float.MinValue; short ApplicationStatus = short.MinValue;
+            float PaidFees = 0; short ApplicationStatus = 0;
             DateTime ApplicationDate = DateTime.MinValue, LastStatusDate = DateTime.MinValue;
 
             bool IsFound = clsApplicationData.Find(

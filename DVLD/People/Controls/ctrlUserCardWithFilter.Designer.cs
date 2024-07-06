@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.gbFilter = new System.Windows.Forms.GroupBox();
-            this.btnAddnew = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.cbFilterColumns = new System.Windows.Forms.ComboBox();
@@ -39,7 +39,7 @@
             // 
             // gbFilter
             // 
-            this.gbFilter.Controls.Add(this.btnAddnew);
+            this.gbFilter.Controls.Add(this.btnAddNew);
             this.gbFilter.Controls.Add(this.btnSearch);
             this.gbFilter.Controls.Add(this.txtFilterValue);
             this.gbFilter.Controls.Add(this.cbFilterColumns);
@@ -50,16 +50,16 @@
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
             // 
-            // btnAddnew
+            // btnAddNew
             // 
-            this.btnAddnew.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddnew.Location = new System.Drawing.Point(731, 22);
-            this.btnAddnew.Name = "btnAddnew";
-            this.btnAddnew.Size = new System.Drawing.Size(97, 23);
-            this.btnAddnew.TabIndex = 3;
-            this.btnAddnew.Text = "Add new";
-            this.btnAddnew.UseVisualStyleBackColor = true;
-            this.btnAddnew.Click += new System.EventHandler(this.btnAddnew_Click);
+            this.btnAddNew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddNew.Location = new System.Drawing.Point(731, 22);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(97, 23);
+            this.btnAddNew.TabIndex = 3;
+            this.btnAddNew.Text = "Add new";
+            this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // btnSearch
             // 
@@ -124,7 +124,7 @@
         private System.Windows.Forms.GroupBox gbFilter;
         private System.Windows.Forms.ComboBox cbFilterColumns;
         private System.Windows.Forms.TextBox txtFilterValue;
-        private System.Windows.Forms.Button btnAddnew;
+        private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Button btnSearch;
     }
 }

@@ -8,11 +8,13 @@ namespace DVLD.Applications.Local_Driving_License
 {
     public partial class frmInsertUpdateLocalDrivingLicenseApplication : Form
     {
+        public delegate void DataBackEventHandler(object sender, int LocalDrivingLicenseApplicationID);
+        public event DataBackEventHandler DataBack;
         private enum enMode { Insert = 1, Update = 2 }
 
         private enMode _Mode;
 
-        public int _LocalDrivingLicenseApplicationID;
+        public int _LocalDrivingLicenseApplicationID = -1;
 
         private clsLocalDrivingLicenseApplication _LocalDrivingLicenseApplication;
 
@@ -25,11 +27,11 @@ namespace DVLD.Applications.Local_Driving_License
             _LocalDrivingLicenseApplication = new clsLocalDrivingLicenseApplication();
         }
 
-        public frmInsertUpdateLocalDrivingLicenseApplication(int LocalLicenceApplicationID)
+        public frmInsertUpdateLocalDrivingLicenseApplication(int LocalLicenseApplicationID)
         {
             InitializeComponent();
             _Mode = enMode.Update;
-            _LocalDrivingLicenseApplicationID = LocalLicenceApplicationID;
+            _LocalDrivingLicenseApplicationID = LocalLicenseApplicationID;
         }
 
         private void frmInsertUpdateLocalDrivingLicenseApplication_Load(object sender, EventArgs e)
@@ -38,7 +40,7 @@ namespace DVLD.Applications.Local_Driving_License
             if (_Mode == enMode.Update)
                 _LoadDate();
         }
-        private void _SetLincesClassInComboBox()
+        private void _SetLicenseClassInComboBox()
         {
             DataTable dtLicenses = clsLicenseClass.All();
             foreach (DataRow Row in dtLicenses.Rows)
@@ -48,30 +50,28 @@ namespace DVLD.Applications.Local_Driving_License
         private void _LoadDate()
         {
             _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindLocalDrivingLicenseApplicationData(_LocalDrivingLicenseApplicationID);
-
             ctrlUserCardWithFilter.LoadPersonalCardInformation(_LocalDrivingLicenseApplication.ApplicationPersonID);
-            MessageBox.Show(_LocalDrivingLicenseApplicationID.ToString());
-            cbLicenseClass.SelectedIndex = -- _LocalDrivingLicenseApplication.LicenseClassID;
+            cbLicenseClass.SelectedIndex = --_LocalDrivingLicenseApplication.LicenseClassID;
             lblApplicationDate.Text = _LocalDrivingLicenseApplication.ApplicationDate.ToString("dd-MM-yyyy");
-            lblCreatedBy.Text = _LocalDrivingLicenseApplication.CreatedByInfo.Username;
+            lblCreatedBy.Text = _LocalDrivingLicenseApplication.CreatedByInfo.Username.ToString();
         }
 
         private void _SetDefaultValuesInApplicationInfoTab()
         {
-            _SetLincesClassInComboBox();
+            _SetLicenseClassInComboBox();
             if (_Mode == enMode.Insert)
             {
                 lblTitle.Text = "Insert Local Driving License Application";
                 cbLicenseClass.SelectedIndex = 2;
                 lblApplicationDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                lblCreatedBy.Text = clsAuth.User?.Username ?? "Authrized user";
+                lblCreatedBy.Text = clsAuth.User?.Username ?? "Authorized user";
             }
             else
             {
                 _LoadDate();
                 lblLocalDrivingLicebseApplicationID.Text = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
                 lblTitle.Text = "Update Local Driving License Application";
-              
+                ctrlUserCardWithFilter.DisabledFilterBox();
             }
             lblApplicationFees.Text = "$ " + clsApplicationType.Find((int)clsApplication.enApplicationType.NewDrivingLicense).ApplicationTypeFees.ToString();
         }
@@ -136,9 +136,10 @@ namespace DVLD.Applications.Local_Driving_License
 
             if (_LocalDrivingLicenseApplication.Save())
             {
+                _LocalDrivingLicenseApplicationID = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID;
                 _Mode = enMode.Update;
-
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DataBack?.Invoke(this, _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID);
                 _SetDefaultValuesInApplicationInfoTab();
                 _LoadDate();
             }

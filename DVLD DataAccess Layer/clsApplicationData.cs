@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using System;
+using System.Collections.Generic;
 
 namespace DVLD_DataAccess_Layer
 {
@@ -143,23 +144,28 @@ namespace DVLD_DataAccess_Layer
                 conn.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
+                var results = new List<Dictionary<string, object>>();
+
                 if (reader.Read())
                 {
+                    var row = new Dictionary<string, object>();
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        row[reader.GetName(i)] = reader.GetValue(i);
+                    }
+                    results.Add(row);
                     IsFound = true;
-                    
                     ApplicationID = (int)reader["ApplicationID"];
                     ApplicantPersonID = (int)reader["ApplicantPersonID"];
                     ApplicationDate = (DateTime)reader["ApplicationDate"];
                     ApplicationTypeID = (int)reader["ApplicationTypeID"];
-                    ApplicationStatus = (short)reader["ApplicationStatus"];
-                    if (DBNull.Value == reader["LastStatusDate"])
-                    {
-                        ApplicationStatus = 0;
-                    }
-                    object test = reader["LastStatusDate"];
+                    if (short.TryParse(reader["ApplicationStatus"].ToString(), out short ApplicationStatusShort))
+                        ApplicationStatus = ApplicationStatusShort;
                     LastStatusDate = (DateTime)reader["LastStatusDate"];
-                    PaidFees = reader["PaidFees"] != DBNull.Value && float.TryParse(reader["PaidFees"].ToString(), out float paidFees) ? paidFees : 0.0f;
+                    if (float.TryParse(reader["PaidFees"].ToString(), out float PaidFeesFloat))
+                        PaidFees = PaidFeesFloat;
                     CreatedByUserID = (int)reader["CreatedByUserID"];
+                    
                 }
                 reader.Close();
             }

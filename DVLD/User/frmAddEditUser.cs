@@ -164,7 +164,7 @@ namespace DVLD.User
             _User = clsUser.Find(_UserID);
             if (_User  == null)
             {
-                ctrlUserCardWithFilter.ResetLablesPersonCard();
+                ctrlUserCardWithFilter.ResetLabelsPersonCard();
                 MessageBox.Show("This user not found");
                 return;
             }
@@ -184,7 +184,7 @@ namespace DVLD.User
             if (_Mode == _enMode.Edit)
             {
                 _LoadData();
-                ctrlUserCardWithFilter.DenableFilterBox();
+                ctrlUserCardWithFilter.DisabledFilterBox();
             }
         }
     }

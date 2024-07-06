@@ -1,8 +1,4 @@
 ﻿using DVLD.Applications.Local_Driving_License;
-using DVLD.ApplicationTypes;
-using DVLD.Auth;
-using DVLD.People;
-using DVLD.Tests;
 using System;
 using System.Windows.Forms;
 
@@ -19,7 +15,7 @@ namespace DVLD
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmLogin());
-            Application.Run(new frmInsertUpdateLocalDrivingLicenseApplication(43));
+            Application.Run(new frmInsertUpdateLocalDrivingLicenseApplication());
         }
     }
 }

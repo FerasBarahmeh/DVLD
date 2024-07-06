@@ -70,9 +70,13 @@ namespace DVLD_DataAccess_Layer
                     IsFounded = true;
                     ClassName = reader["ClassName"].ToString();
                     ClassDescription = reader["ClassDescription"].ToString();
-                    MinimumAllowedAge = (short)reader["MinimumAllowedAge"];
-                    DefaultValidityLength = (short)reader["DefaultValidityLength"];
-                    ClassFees = (float)reader["ClassFees"];
+                    if (short.TryParse(reader["MinimumAllowedAge"].ToString(), out short MinimumAllowedAgeShort))
+                        MinimumAllowedAge = MinimumAllowedAgeShort;
+                    if (short.TryParse(reader["DefaultValidityLength"].ToString
+                        (), out short DefaultValidityLengthShort))
+                        DefaultValidityLength = DefaultValidityLengthShort;
+                    if(float.TryParse(reader["ClassFees"].ToString(), out float ClassFeesFloat))
+                        ClassFees = ClassFeesFloat;
                 }
                 reader.Close();
             }

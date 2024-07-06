@@ -23,7 +23,7 @@ namespace DVLD.People.Controls
             {(int)_enFilterColumns.PersonID, "Person ID" },
         };
         
-        private void _FillFilterColmunsComboBox()
+        private void _FillFilterColumnsComboBox()
         {
             cbFilterColumns.DataSource = new BindingSource(_FilterColumns, null);
             cbFilterColumns.DisplayMember = "Value";
@@ -33,7 +33,7 @@ namespace DVLD.People.Controls
         public ctrlUserCardWithFilter()
         {
             InitializeComponent();
-            _FillFilterColmunsComboBox();
+            _FillFilterColumnsComboBox();
         }
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
@@ -58,7 +58,7 @@ namespace DVLD.People.Controls
             
         }
 
-        public void ResetLablesPersonCard()
+        public void ResetLabelsPersonCard()
         {
             ctrlPersoneCard.ResetLables();
         }
@@ -85,21 +85,21 @@ namespace DVLD.People.Controls
                 ctrlPersoneCard.LoadPersonInformation(FilterValue);
         }
 
-        private void _RetreveDataAfterAdd(object sender, int PersonID)
+        private void _RetrieveDataAfterAdd(object sender, int PersonID)
         {
             cbFilterColumns.SelectedIndex = 1;
             txtFilterValue.Text = PersonID.ToString();
             LoadPersonalCardInformation(PersonID);
         }
 
-        private void btnAddnew_Click(object sender, EventArgs e)
+        private void btnAddNew_Click(object sender, EventArgs e)
         {
             frmAddEditPerson frmAddEditPerson = new frmAddEditPerson();
-            frmAddEditPerson.DataBack += _RetreveDataAfterAdd;
+            frmAddEditPerson.DataBack += _RetrieveDataAfterAdd;
             frmAddEditPerson.ShowDialog();
         }
 
-        public void DenableFilterBox()
+        public void DisabledFilterBox()
         {
             gbFilter.Enabled = false;
             cbFilterColumns.SelectedIndex = 1;
