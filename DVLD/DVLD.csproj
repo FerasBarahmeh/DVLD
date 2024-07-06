@@ -85,11 +85,11 @@
     <Compile Include="General Class\clsAuth.cs" />
     <Compile Include="General Class\clsValidation.cs" />
     <Compile Include="General Class\clsFilesHandler.cs" />
-    <Compile Include="People\Controls\ctrlPersoneCard.cs">
+    <Compile Include="People\Controls\ctrlPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="People\Controls\ctrlPersoneCard.Designer.cs">
-      <DependentUpon>ctrlPersoneCard.cs</DependentUpon>
+    <Compile Include="People\Controls\ctrlPersonCard.Designer.cs">
+      <DependentUpon>ctrlPersonCard.cs</DependentUpon>
     </Compile>
     <Compile Include="People\Controls\ctrlUserCardWithFilter.cs">
       <SubType>UserControl</SubType>
@@ -182,8 +182,8 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\Controls\ctrlPersoneCard.resx">
-      <DependentUpon>ctrlPersoneCard.cs</DependentUpon>
+    <EmbeddedResource Include="People\Controls\ctrlPersonCard.resx">
+      <DependentUpon>ctrlPersonCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\Controls\ctrlUserCardWithFilter.resx">
       <DependentUpon>ctrlUserCardWithFilter.cs</DependentUpon>

@@ -84,6 +84,13 @@ namespace DVLD.People.Controls
 
         private void btnEditPerson_Click(object sender, EventArgs e)
         {
+            if (_Person == null)
+            {
+                MessageBox.Show("chose person", "Not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             frmAddEditPerson EditForm = new frmAddEditPerson(_Person.PersonID);
             EditForm.ShowDialog();
             LoadPersonInformation(_Person.PersonID);

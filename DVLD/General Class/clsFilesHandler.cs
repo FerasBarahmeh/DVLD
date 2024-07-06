@@ -1,17 +1,16 @@
 ﻿using System;
 using System.IO;
-using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace DVLD.General_Class
 {
     public static class clsFilesHandler
     {
-        private static string ProjectFilesPath = "C:\\Container\\DVLD\\Images\\";
+        private static string ProjectFilesPath = "C:\\Container\\DVLD Githup\\Images\\";
 
         public static bool CreateFolderIfNotExist(string path)
         {
-            if (! File.Exists(path))
+            if (!File.Exists(path))
             {
                 try
                 {
@@ -26,7 +25,7 @@ namespace DVLD.General_Class
             }
             return true;
         }
-        
+
         public static string GenerateGUID()
         {
             return Guid.NewGuid().ToString();
@@ -34,19 +33,19 @@ namespace DVLD.General_Class
 
         public static string ReplaceFileNameWithGUID(string path)
         {
-           FileInfo fileInfo = new FileInfo(path);
-           string Extention = fileInfo.Extension;
+            FileInfo fileInfo = new FileInfo(path);
+            string Extention = fileInfo.Extension;
             return GenerateGUID() + Extention;
         }
 
 
         public static bool CopyFileToProjectFilesFolder(ref string FilePath)
         {
-            if (! CreateFolderIfNotExist(FilePath))
+            if (!CreateFolderIfNotExist(FilePath))
                 return false;
-            
+
             string Destination = ProjectFilesPath + ReplaceFileNameWithGUID(FilePath);
-            
+
             try
             {
                 File.Copy(FilePath, Destination, true);

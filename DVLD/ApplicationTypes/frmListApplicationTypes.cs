@@ -9,7 +9,7 @@ namespace DVLD.ApplicationTypes
     public partial class frmListApplicationTypes : Form
     {
         private DataTable _AllApplicationTypes;
-        
+
         private DataTable _dtApplicationTypes;
 
         public frmListApplicationTypes()
@@ -24,7 +24,7 @@ namespace DVLD.ApplicationTypes
             Dictionary<string, int> HeaderTable = new Dictionary<string, int>
             {
               { "Application Type ID", 150},
-              { "Application Type Tiltle", 300 },
+              { "Application Type Title", 300 },
               { "Feed", 100}
             };
 

@@ -21,7 +21,7 @@ namespace DVLD.Tests
             Dictionary<string, int> HeaderTable = new Dictionary<string, int>
             {
               { "Test ID", 90},
-              { "Test Tiltle", 200 },
+              { "Test Title", 200 },
               { "Test Description", 300 },
               { "Feed", 70}
             };

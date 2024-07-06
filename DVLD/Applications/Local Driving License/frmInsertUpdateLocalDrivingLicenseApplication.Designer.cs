@@ -345,6 +345,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tcInsertUpdateLocalDrivingLicenseApplication);
             this.Name = "frmInsertUpdateLocalDrivingLicenseApplication";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Insert | Update Local Driving License Application";
             this.Load += new System.EventHandler(this.frmInsertUpdateLocalDrivingLicenseApplication_Load);
             this.tcInsertUpdateLocalDrivingLicenseApplication.ResumeLayout(false);

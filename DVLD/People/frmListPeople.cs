@@ -12,7 +12,7 @@ namespace DVLD.People
         private static DataTable _AllPeople = clsPersone.GetAllPeople();
         private DataTable _Peoples = _AllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo", "FirstName", "SecondName", "ThirdName", "LastName", "GenderName", "DateOfBirth", "CountryName", "Phone", "Email");
         private enum FilterColumns { NoFilter = 0, PersonID = 1, NationalNo = 2, FirstName = 3, SecondName = 4, ThirdName = 5, LastName = 6, Nationality = 7, Gender = 8, Phone = 9, Email = 10 };
-        
+
         private Dictionary<int, string> _FilterValues = new Dictionary<int, string>
         {
             { 0, "NoFilter" },
@@ -71,7 +71,7 @@ namespace DVLD.People
             dgvPeople.DataSource = _Peoples;
             lblCountPeopleRecourd.Text = _Peoples.Rows.Count.ToString();
 
-            if (_Peoples.Rows.Count > 0 ) _SelectDGVPeopleColumnNameAndWidth(ref dgvPeople);
+            if (_Peoples.Rows.Count > 0) _SelectDGVPeopleColumnNameAndWidth(ref dgvPeople);
 
         }
 
@@ -85,7 +85,7 @@ namespace DVLD.People
 
             dgvPeople.DataSource = _Peoples;
             lblCountPeopleRecourd.Text = dgvPeople.Rows.Count.ToString();
-        
+
         }
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace DVLD.People
 
         private void tsmiEditPerson_Click(object sender, EventArgs e)
         {
-            int PersonID = (int)dgvPeople.CurrentRow.Cells[0].Value;   
+            int PersonID = (int)dgvPeople.CurrentRow.Cells[0].Value;
             frmAddEditPerson UpdateForm = new frmAddEditPerson(PersonID);
             UpdateForm.ShowDialog();
             _RefreshDGV();
@@ -112,12 +112,12 @@ namespace DVLD.People
 
         private void tsmiSendEmail_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This Fetchuer Unnder implemented", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("This Feature under implemented", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void tsmiPhone_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This Fetchuer Unnder implemented", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("This Feature under implemented", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void tsmiDeletePerson_Click(object sender, EventArgs e)
@@ -157,7 +157,8 @@ namespace DVLD.People
                 txtFilterValue.Visible = true;
                 txtFilterValue.Text = null;
                 txtFilterValue.Focus();
-            } else
+            }
+            else
             {
                 txtFilterValue.Visible = false;
                 _Peoples.DefaultView.RowFilter = "";
@@ -166,16 +167,16 @@ namespace DVLD.People
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
             if ((FilterColumns)cbFilterPersonBy.SelectedValue == FilterColumns.PersonID)
-                e.Handled = ! char.IsDigit(e.KeyChar) && ! char.IsControl(e.KeyChar);
-            
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
         }
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
         {
             int FilterColumnChosen = (int)cbFilterPersonBy.SelectedValue;
-            
+
             if ((FilterColumns)FilterColumnChosen == FilterColumns.NoFilter || string.IsNullOrEmpty(txtFilterValue.Text))
             {
                 _Peoples.DefaultView.RowFilter = "";
@@ -183,11 +184,11 @@ namespace DVLD.People
                 return;
             }
 
-            if ((FilterColumns)FilterColumnChosen  == FilterColumns.PersonID)
+            if ((FilterColumns)FilterColumnChosen == FilterColumns.PersonID)
                 _Peoples.DefaultView.RowFilter = string.Format("[{0}] = {1}", _FilterValues[FilterColumnChosen], txtFilterValue.Text.Trim());
             else
                 _Peoples.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", _FilterValues[FilterColumnChosen], txtFilterValue.Text.Trim());
-           
+
             lblCountPeopleRecourd.Text = _Peoples.DefaultView.Count.ToString();
         }
     }

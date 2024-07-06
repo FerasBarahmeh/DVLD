@@ -22,7 +22,7 @@ namespace DVLD.User
         public frmAddEditUser(int UserID)
         {
             InitializeComponent();
-            _Mode= _enMode.Edit;
+            _Mode = _enMode.Edit;
             _UserID = UserID;
         }
 
@@ -30,14 +30,14 @@ namespace DVLD.User
         {
             if (ctrlUserCardWithFilter.SelectedPerson == null)
             {
-                MessageBox.Show("Pleas determin the person you want has user privilage", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Pleas determine the person you want has user privilege", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tcAddEditUser.SelectedIndex = 0;
                 return false;
             }
 
             if (_Mode == _enMode.Add && clsPersone.IsUser(ctrlUserCardWithFilter.SelectedPerson.PersonID))
             {
-                MessageBox.Show("The Person Has ID " + ctrlUserCardWithFilter.SelectedPerson.PersonID + " is alrady has user privilage",
+                MessageBox.Show("The Person Has ID " + ctrlUserCardWithFilter.SelectedPerson.PersonID + " is already has user privilege",
                     "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tcAddEditUser.SelectedIndex = 0;
                 return false;
@@ -59,11 +59,11 @@ namespace DVLD.User
 
         private void _FireErrorValidating(Control sender, CancelEventArgs e, string ErrorMessage)
         {
-            if (! string.IsNullOrEmpty(ErrorMessage))
+            if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 errorProvider.SetError(sender, ErrorMessage);
                 e.Cancel = true;
-            } 
+            }
             else
             {
                 errorProvider.SetError(sender, string.Empty);
@@ -80,7 +80,7 @@ namespace DVLD.User
 
 
             if (txtUsername.Text != _User.Username && clsUser.IsExist(txtUsername.Text))
-                ErrorMessage = "Username is alrady used.";
+                ErrorMessage = "Username is already used.";
 
             _FireErrorValidating(Input, e, ErrorMessage);
         }
@@ -92,9 +92,9 @@ namespace DVLD.User
 
             if (string.IsNullOrEmpty(Input.Text) && _User.Password != Input.Text)
                 ErrorMessage = "Password is required.";
-                
+
             if (Input.Text.Length > 20)
-                ErrorMessage = "Password length is 20 as maximaum.";
+                ErrorMessage = "Password length is 20 as maximum.";
 
             _FireErrorValidating(Input, e, ErrorMessage);
         }
@@ -108,12 +108,12 @@ namespace DVLD.User
 
             _FireErrorValidating(Input, e, ErrorMessage);
         }
-        
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (! ValidateChildren())
+            if (!ValidateChildren())
             {
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the error", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             _User.PersonID = ctrlUserCardWithFilter.PersonID;
@@ -147,7 +147,7 @@ namespace DVLD.User
             {
                 _User = new clsUser();
                 lblTitle.Text = "Add user";
-            } 
+            }
             else
             {
                 lblTitle.Text = "Update user";
@@ -162,20 +162,20 @@ namespace DVLD.User
         private void _LoadData()
         {
             _User = clsUser.Find(_UserID);
-            if (_User  == null)
+            if (_User == null)
             {
                 ctrlUserCardWithFilter.ResetLabelsPersonCard();
                 MessageBox.Show("This user not found");
                 return;
             }
-            
+
             ctrlUserCardWithFilter.LoadPersonalCardInformation(_User.PersonID);
             lblUserID.Text = _UserID.ToString();
             txtUsername.Text = _User.Username;
             txtPassword.Text = _User.Password;
             txtConfirmPassword.Text = _User.Password;
             cbIsActive.Checked = _User.IsActive;
-            
+
         }
 
         private void frmAddEditUser_Load(object sender, EventArgs e)

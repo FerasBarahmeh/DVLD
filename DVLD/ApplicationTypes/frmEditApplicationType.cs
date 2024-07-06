@@ -45,7 +45,7 @@ namespace DVLD.ApplicationTypes
             if (string.IsNullOrEmpty(Value))
                 ErrorMessage = "Title is required.";
             if (Value != _ApplicationType.ApplicatonTypeTitle && clsApplicationType.IsExist(Value))
-                ErrorMessage = "This title application type alrady used";
+                ErrorMessage = "This title application type already used";
 
             _FireError(Input, ErrorMessage);
             return string.IsNullOrEmpty(ErrorMessage);
@@ -75,7 +75,7 @@ namespace DVLD.ApplicationTypes
         {
             if (!_Validated())
             {
-                MessageBox.Show("Some inputs is not valid hover in icone to describe error", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some inputs is not valid hover in icon to describe error", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

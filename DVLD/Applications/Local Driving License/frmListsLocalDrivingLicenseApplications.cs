@@ -114,5 +114,11 @@ namespace DVLD.Applications.Local_Driving_License
         {
             Close();
         }
+
+        private void btnAddNewApplication_Click(object sender, EventArgs e)
+        {
+            frmInsertUpdateLocalDrivingLicenseApplication frm = new frmInsertUpdateLocalDrivingLicenseApplication();
+            frm.ShowDialog();
+        }
     }
 }

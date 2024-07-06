@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace DVLD.User
@@ -11,8 +10,8 @@ namespace DVLD.User
     {
         private static DataTable _Users = clsUser.All();
         private static DataTable _dtUsers = _Users.DefaultView.ToTable(false, "UserID", "PersonID", "Username", "IsActive", "FullName");
-        enum IndexsForFilterColumns { NoFilter = 0, UserId=1, PersonID= 2, Username=3, IsActive=4, FullName=5 }
-        private static Dictionary<int, string> _FilterColumns = new Dictionary<int, string> 
+        enum IndexsForFilterColumns { NoFilter = 0, UserId = 1, PersonID = 2, Username = 3, IsActive = 4, FullName = 5 }
+        private static Dictionary<int, string> _FilterColumns = new Dictionary<int, string>
         {
             {0, "NoFilter" },
             {1, "UserID" },
@@ -43,7 +42,7 @@ namespace DVLD.User
         {
             cbFilterUsersBy.DataSource = new BindingSource(_FilterColumns, null);
             cbFilterUsersBy.DisplayMember = "Value";
-            cbFilterUsersBy.ValueMember= "Key";
+            cbFilterUsersBy.ValueMember = "Key";
         }
 
         private static void _SelectDGVPeopleColumnNameAndWidth(ref DataGridView DGV)
@@ -76,7 +75,7 @@ namespace DVLD.User
 
         private void cbFilterUsersBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IndexsForFilterColumns SelectedItem = (IndexsForFilterColumns) cbFilterUsersBy.SelectedIndex;
+            IndexsForFilterColumns SelectedItem = (IndexsForFilterColumns)cbFilterUsersBy.SelectedIndex;
             txtFilterNotStrict.Visible = !(SelectedItem == IndexsForFilterColumns.NoFilter);
             txtFilterNotStrict.Text = null;
             txtFilterNotStrict.Focus();
@@ -94,7 +93,7 @@ namespace DVLD.User
         {
             IndexsForFilterColumns SelectedValue = (IndexsForFilterColumns)cbFilterUsersBy.SelectedValue;
             if (SelectedValue == IndexsForFilterColumns.PersonID || SelectedValue == IndexsForFilterColumns.UserId)
-                e.Handled = ! char.IsDigit(e.KeyChar) && ! char.IsControl(e.KeyChar);
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void txtFilterNotStrict_TextChanged(object sender, EventArgs e)
@@ -109,7 +108,7 @@ namespace DVLD.User
                 lblCountPeopleRecourd.Text = _dtUsers.Rows.Count.ToString();
                 return;
             }
-            
+
             if (FilterTypeKey == IndexsForFilterColumns.PersonID || FilterTypeKey == IndexsForFilterColumns.UserId)
                 _dtUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterBy, FilterValue);
             else
@@ -163,7 +162,7 @@ namespace DVLD.User
         {
             int UserID = (int)dgvUsers.CurrentRow.Cells[0].Value;
             DialogResult Result = MessageBox.Show("Are you sure you want delete user oun id " + UserID, "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
+
             if (Result == DialogResult.Yes)
             {
                 if (clsUser.Delete(UserID))
@@ -172,9 +171,9 @@ namespace DVLD.User
                     MessageBox.Show("Success delete user oun ID " + UserID, "Success Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
-                    MessageBox.Show("User is not deleted due to data connected to it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("User is not deleted due to data connected to it.", "Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
     }
 }

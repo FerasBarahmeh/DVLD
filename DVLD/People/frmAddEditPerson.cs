@@ -15,13 +15,13 @@ namespace DVLD.People
         public event DataBackEventHandler DataBack;
 
         private clsPersone _Person;
-        
+
         private int _PersonID = -1;
-        private enum Mode{ Add = 0, Edit= 1 }
-        private enum Gender { Male = 0, Female =1 }
+        private enum Mode { Add = 0, Edit = 1 }
+        private enum Gender { Male = 0, Female = 1 }
 
         private Mode _Mode = Mode.Add;
-        
+
         public frmAddEditPerson()
         {
             InitializeComponent();
@@ -52,11 +52,12 @@ namespace DVLD.People
             {
                 lblTitle.Text = "Add New Person";
                 _Person = new clsPersone();
-            }else 
+            }
+            else
                 lblTitle.Text = "Update Person";
-            
+
             pbPersonImage.Image = rbMale.Checked ? Resources.Male_512 : Resources.Female_512;
-            
+
             llRemoveImage.Visible = (pbPersonImage.ImageLocation != null);
 
             dtpDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
@@ -78,12 +79,12 @@ namespace DVLD.People
         private void _LoadData()
         {
             _Person = clsPersone.Find(_PersonID);
-          
+
             if (_Person == null)
             {
-                MessageBox.Show("Not Found This Person in out recoreds", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Not Found This Person in out records", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
-                return;     
+                return;
             }
 
             txtFirstName.Text = _Person.FirstaName;
@@ -97,8 +98,8 @@ namespace DVLD.People
             txtEmail.Text = _Person.Email;
             txtAddress.Text = _Person.Address;
 
-            if (! string.IsNullOrEmpty(_Person.ImagePath))
-                pbPersonImage.ImageLocation= _Person.ImagePath;
+            if (!string.IsNullOrEmpty(_Person.ImagePath))
+                pbPersonImage.ImageLocation = _Person.ImagePath;
 
             llRemoveImage.Visible = !(string.IsNullOrEmpty(_Person.ImagePath));
             cbCountry.SelectedIndex = cbCountry.FindString(_Person.CountryInformation.CountryName);
@@ -109,7 +110,7 @@ namespace DVLD.People
             _ResetFieldsToDefault();
 
             if (_Mode == Mode.Edit) _LoadData();
-                
+
         }
 
         private void rbMale_CheckedChanged(object sender, EventArgs e)
@@ -132,7 +133,7 @@ namespace DVLD.People
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                 string selectedPath = openFileDialog.FileName;
+                string selectedPath = openFileDialog.FileName;
                 pbPersonImage.Load(selectedPath);
                 llRemoveImage.Visible = true;
             }
@@ -172,15 +173,16 @@ namespace DVLD.People
 
             if (string.IsNullOrEmpty(temp.Text.Trim()))
                 Message = "Can't be Empty Value";
-            
+
             if (_Person.NationalNo != txtNationalNo.Text && clsPersone.IsPersonExist(temp.Text.Trim()))
                 Message = "This national No. is used";
-            
-            if (! string.IsNullOrEmpty(Message))
+
+            if (!string.IsNullOrEmpty(Message))
             {
                 e.Cancel = true;
                 ep.SetError(temp, Message);
-            } else
+            }
+            else
             {
                 ep.SetError(temp, null);
             }
@@ -190,14 +192,15 @@ namespace DVLD.People
         {
             TextBox temp = (TextBox)sender;
 
-            if (!string.IsNullOrEmpty(txtEmail.Text.Trim()) 
-                && ! clsValidation.IsValidEmail(txtEmail.Text.Trim()))
+            if (!string.IsNullOrEmpty(txtEmail.Text.Trim())
+                && !clsValidation.IsValidEmail(txtEmail.Text.Trim()))
             {
-                e.Cancel= true;
+                e.Cancel = true;
                 ep.SetError(temp, "Not valid email format");
-            } else
+            }
+            else
             {
-                ep.SetError(temp, null) ;
+                ep.SetError(temp, null);
             }
         }
 
@@ -206,13 +209,13 @@ namespace DVLD.People
             // If image changed
             if (_Person.ImagePath != pbPersonImage.ImageLocation)
             {
-                if (! string.IsNullOrEmpty(_Person.ImagePath))
+                if (!string.IsNullOrEmpty(_Person.ImagePath))
                 {
                     try
                     {
                         File.Delete(_Person.ImagePath);
                     }
-                    catch (Exception){}
+                    catch (Exception) { }
                 }
 
                 if (pbPersonImage.ImageLocation != null)
@@ -222,7 +225,8 @@ namespace DVLD.People
                     {
                         pbPersonImage.ImageLocation = Source;
                         return true;
-                    } else
+                    }
+                    else
                     {
                         MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
@@ -238,7 +242,7 @@ namespace DVLD.People
         {
             if (!this.ValidateChildren())
             {
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the error", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

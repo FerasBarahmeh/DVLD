@@ -152,7 +152,5 @@ namespace DVLD.Applications.Local_Driving_License
         {
             Close();
         }
-
-
     }
 }

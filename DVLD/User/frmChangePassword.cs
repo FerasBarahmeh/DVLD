@@ -8,7 +8,7 @@ namespace DVLD.User
     {
         private int _UserID;
         private clsUser _User;
-        
+
         public frmChangePassword(int UserID)
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace DVLD.User
                 ErrorMessage = "Password is required.";
 
             if (_User.Password != Input.Text)
-                ErrorMessage = "Password not match with currrent password.";
+                ErrorMessage = "Password not match with current password.";
 
             _FireError(Input, ErrorMessage);
             return string.IsNullOrEmpty(ErrorMessage);
@@ -52,7 +52,7 @@ namespace DVLD.User
                 ErrorMessage = "Password is required.";
 
             if (Input.Text.Length > 20)
-                ErrorMessage = "Password length is 20 as maximaum.";
+                ErrorMessage = "Password length is 20 as maximum.";
 
             _FireError(Input, ErrorMessage);
             return string.IsNullOrEmpty(ErrorMessage);
@@ -86,9 +86,9 @@ namespace DVLD.User
 
         private void btnChange_Click(object sender, EventArgs e)
         {
-            if (! _Validated())
+            if (!_Validated())
             {
-                MessageBox.Show("Some inputs is not valid hover in icone to describe error", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some inputs is not valid hover in icon to describe error", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
