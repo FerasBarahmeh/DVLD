@@ -120,5 +120,10 @@ namespace DVLD.Applications.Local_Driving_License
             frmInsertUpdateLocalDrivingLicenseApplication frm = new frmInsertUpdateLocalDrivingLicenseApplication();
             frm.ShowDialog();
         }
+
+        private void cmsApplications_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
     }
 }

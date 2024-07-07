@@ -1,5 +1,4 @@
-﻿using DVLD.People;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace DVLD
@@ -14,8 +13,8 @@ namespace DVLD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmLogin());
-            Application.Run(new frmDetailsPerson(1));
+            Application.Run(new frmMain(new Auth.frmLogin()));
+            //Application.Run(new frmListsLocalDrivingLicenseApplications());
         }
     }
 }

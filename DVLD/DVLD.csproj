@@ -58,16 +58,16 @@
     <Compile Include="Applications\Local Driving License\frmListsLocalDrivingLicenseApplications.Designer.cs">
       <DependentUpon>frmListsLocalDrivingLicenseApplications.cs</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationTypes\frmEditApplicationType.cs">
+    <Compile Include="Applications\ApplicationTypes\frmEditApplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicationTypes\frmEditApplicationType.Designer.cs">
+    <Compile Include="Applications\ApplicationTypes\frmEditApplicationType.Designer.cs">
       <DependentUpon>frmEditApplicationType.cs</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationTypes\frmListApplicationTypes.cs">
+    <Compile Include="Applications\ApplicationTypes\frmListApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicationTypes\frmListApplicationTypes.Designer.cs">
+    <Compile Include="Applications\ApplicationTypes\frmListApplicationTypes.Designer.cs">
       <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Auth\frmLogin.cs">
@@ -170,10 +170,10 @@
     <EmbeddedResource Include="Applications\Local Driving License\frmListsLocalDrivingLicenseApplications.resx">
       <DependentUpon>frmListsLocalDrivingLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ApplicationTypes\frmEditApplicationType.resx">
+    <EmbeddedResource Include="Applications\ApplicationTypes\frmEditApplicationType.resx">
       <DependentUpon>frmEditApplicationType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ApplicationTypes\frmListApplicationTypes.resx">
+    <EmbeddedResource Include="Applications\ApplicationTypes\frmListApplicationTypes.resx">
       <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Auth\frmLogin.resx">
