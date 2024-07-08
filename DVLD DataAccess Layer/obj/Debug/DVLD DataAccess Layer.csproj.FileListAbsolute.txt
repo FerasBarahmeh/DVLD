@@ -10,3 +10,9 @@ C:\Container\DVLD GIthup\DVLD DataAccess Layer\obj\Debug\DVLD DataAccess Layer.c
 C:\Container\DVLD GIthup\DVLD DataAccess Layer\obj\Debug\DVLD DataAccess Layer.csproj.CoreCompileInputs.cache
 C:\Container\DVLD GIthup\DVLD DataAccess Layer\obj\Debug\DVLD DataAccess Layer.dll
 C:\Container\DVLD GIthup\DVLD DataAccess Layer\obj\Debug\DVLD DataAccess Layer.pdb
+C:\Container\DVLD\DVLD DataAccess Layer\bin\Debug\DVLD DataAccess Layer.dll
+C:\Container\DVLD\DVLD DataAccess Layer\bin\Debug\DVLD DataAccess Layer.pdb
+C:\Container\DVLD\DVLD DataAccess Layer\obj\Debug\DVLD DataAccess Layer.csproj.AssemblyReference.cache
+C:\Container\DVLD\DVLD DataAccess Layer\obj\Debug\DVLD DataAccess Layer.csproj.CoreCompileInputs.cache
+C:\Container\DVLD\DVLD DataAccess Layer\obj\Debug\DVLD DataAccess Layer.dll
+C:\Container\DVLD\DVLD DataAccess Layer\obj\Debug\DVLD DataAccess Layer.pdb

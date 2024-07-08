@@ -75,7 +75,7 @@ namespace DVLD_DataAccess_Layer
                     if (short.TryParse(reader["DefaultValidityLength"].ToString
                         (), out short DefaultValidityLengthShort))
                         DefaultValidityLength = DefaultValidityLengthShort;
-                    if(float.TryParse(reader["ClassFees"].ToString(), out float ClassFeesFloat))
+                    if (float.TryParse(reader["ClassFees"].ToString(), out float ClassFeesFloat))
                         ClassFees = ClassFeesFloat;
                 }
                 reader.Close();
@@ -86,9 +86,47 @@ namespace DVLD_DataAccess_Layer
             }
             finally { conn.Close(); }
 
-          
+
             return IsFounded;
         }
+        public static bool FindIDByName(
+            string ClassName,
+            ref int LicenseClassID
+          )
+        {
+            bool IsFounded = false;
 
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = @"
+                    SELECT 
+	                    LicenseClasses.LicenseClassID,
+                    FROM 
+	                    LicenseClasses 
+                    Where LicenseClasses.ClassName = @ClassName; 
+            ";
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@ClassName", ClassName);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    IsFounded = true;
+                    LicenseClassID = (int)reader["LicenseClassID"];
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Can't find license class ID by name: " + ex.Message);
+            }
+            finally { conn.Close(); }
+
+
+            return IsFounded;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD.Applications.Local_Driving_License;
+using System;
 using System.Windows.Forms;
 
 namespace DVLD
@@ -13,8 +14,8 @@ namespace DVLD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain(new Auth.frmLogin()));
-            //Application.Run(new frmListsLocalDrivingLicenseApplications());
+            //Application.Run(new frmMain(new Auth.frmLogin()));
+            Application.Run(new frmListsLocalDrivingLicenseApplications());
         }
     }
 }

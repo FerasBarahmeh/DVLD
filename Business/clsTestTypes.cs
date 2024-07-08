@@ -6,6 +6,8 @@ namespace Business
 {
     public class clsTestTypes
     {
+        public enum enTestType { VisionTest = 1, WrittenTest = 2, StreetTest = 3 };
+
         private enum _enMode { Update, Add }
         private _enMode _Mode;
         public int TestTypeID;
@@ -33,7 +35,7 @@ namespace Business
 
         public static clsTestTypes Find(int TestID)
         {
-            string TestTypeTitle="", TestTypeDescription="", TestTypeFees ="";
+            string TestTypeTitle = "", TestTypeDescription = "", TestTypeFees = "";
             if (clsTestTypesData.Find(TestID, ref TestTypeTitle, ref TestTypeDescription, ref TestTypeFees))
             {
                 return new clsTestTypes(TestID, TestTypeTitle, TestTypeDescription, TestTypeFees);

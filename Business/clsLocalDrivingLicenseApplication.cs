@@ -95,11 +95,11 @@ namespace Business
         {
 
             int ApplicationID = -1, LicenseClassID = -1;
- 
+
             bool IsFound = clsLocalDrivingLicenseApplicationData.Find(LocalDrivingLicenseApplicationID, ref ApplicationID, ref LicenseClassID);
             if (IsFound)
             {
-               clsApplication Application = FindBaseApplicationByID(ApplicationID);
+                clsApplication Application = FindBaseApplicationByID(ApplicationID);
 
                 return new clsLocalDrivingLicenseApplication(
                     LocalDrivingLicenseApplicationID,
@@ -115,6 +115,11 @@ namespace Business
                 );
             }
             return null;
+        }
+
+        public static bool IsPassTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsPassTestType(LocalDrivingLicenseApplicationID, TestTypeID);
         }
     }
 }

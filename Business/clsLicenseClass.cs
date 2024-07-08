@@ -39,9 +39,16 @@ namespace Business
 
             string ClassName = "", ClassDescription = "";
             short MinimumAllowedAge = short.MinValue, DefaultValidityLength = short.MinValue;
-            float ClassFees =float.MinValue;
-            clsLicenseClassData.Find(LicenseClassID, ref ClassName, ref ClassDescription, ref MinimumAllowedAge, ref DefaultValidityLength, ref ClassFees );
+            float ClassFees = float.MinValue;
+            clsLicenseClassData.Find(LicenseClassID, ref ClassName, ref ClassDescription, ref MinimumAllowedAge, ref DefaultValidityLength, ref ClassFees);
             return new clsLicenseClass(LicenseClassID, ClassName, ClassDescription, MinimumAllowedAge, DefaultValidityLength, ClassFees);
+        }
+
+        public static int FindIDByName(string Name)
+        {
+            int LicenseClassID = -1;
+            bool flag = clsLicenseClassData.FindIDByName(Name, ref LicenseClassID);
+            return flag ? LicenseClassID : -1;
         }
     }
 }

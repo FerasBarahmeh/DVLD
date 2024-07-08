@@ -29,7 +29,7 @@ namespace DVLD_DataAccess_Layer
 
                 reader.Close();
             }
-            catch (Exception )
+            catch (Exception)
             {
                 throw new Exception("Error in render");
             }
@@ -42,7 +42,7 @@ namespace DVLD_DataAccess_Layer
         }
 
         public static int Insert(
-            int ApplicationID, 
+            int ApplicationID,
             int LicenseClassID
         )
         {
@@ -77,7 +77,7 @@ namespace DVLD_DataAccess_Layer
 
         public static bool Find(
             int LocalDrivingLicenseApplicationID,
-            ref int ApplicationID, 
+            ref int ApplicationID,
             ref int LicenseClassID
         )
         {
@@ -118,6 +118,62 @@ namespace DVLD_DataAccess_Layer
 
 
             return IsFound;
+        }
+
+        public static bool IsPassTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            bool Passed = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"
+                SELECT 
+	                TOP 1 TestResult 
+                FROM 
+	                LocalDrivingLicenseApplications
+                INNER JOIN 
+	                TestAppointments
+                ON 
+	                TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
+                INNER JOIN 
+	                Tests
+                ON 
+	                Tests.TestAppointmentID = TestAppointments.TestAppointmentID
+                WHERE 
+	                (LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID)
+                AND
+	                (TestAppointments.TestTypeID = @TestTypeID)
+                ORDER BY 
+	                TestAppointments.TestAppointmentID 
+                DESC;
+            ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && bool.TryParse(result.ToString(), out bool returnedResult))
+                {
+                    Passed = returnedResult;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return Passed;
+
         }
     }
 }
