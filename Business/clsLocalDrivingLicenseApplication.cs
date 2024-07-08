@@ -121,5 +121,9 @@ namespace Business
         {
             return clsLocalDrivingLicenseApplicationData.IsPassTestType(LocalDrivingLicenseApplicationID, TestTypeID);
         }
+        public static bool HasLicense(int LocalDrivingLicenseApplicationID, int LicenseClassID)
+        {
+            return clsLocalDrivingLicenseApplicationData.HasLicense(LocalDrivingLicenseApplicationID, LicenseClassID);
+        }
     }
 }

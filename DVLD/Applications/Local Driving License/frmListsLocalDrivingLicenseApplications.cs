@@ -124,6 +124,8 @@ namespace DVLD.Applications.Local_Driving_License
         private void cmsApplications_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             int LocalDrivingLicenseID = (int)dgvListLocalDrivingApplicationLicense.CurrentRow.Cells[0].Value;
+            string ClassName = (string)dgvListLocalDrivingApplicationLicense.CurrentRow.Cells[1].Value;
+            int LicenseClassID = clsLicenseClass.FindIDByName(ClassName);
             clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindLocalDrivingLicenseApplicationData(LocalDrivingLicenseID);
 
             bool PassVisionTest = clsLocalDrivingLicenseApplication.IsPassTestType(LocalDrivingLicenseID, (int)clsTestTypes.enTestType.VisionTest);
@@ -138,6 +140,7 @@ namespace DVLD.Applications.Local_Driving_License
                 scheduleWrittenTestToolStripMenuItem.Enabled = PassVisionTest && !PassWrittenTest;
                 scheduleStreetTestToolStripMenuItem.Enabled = PassVisionTest && PassWrittenTest && !PassStreetTest;
             }
+            showLicenseToolStripMenuItem.Enabled = clsLocalDrivingLicenseApplication.HasLicense(LocalDrivingLicenseID, LicenseClassID);
         }
     }
 }

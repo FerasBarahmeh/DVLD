@@ -99,7 +99,7 @@ namespace DVLD_DataAccess_Layer
             SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string Query = @"
                     SELECT 
-	                    LicenseClasses.LicenseClassID,
+	                    LicenseClasses.LicenseClassID
                     FROM 
 	                    LicenseClasses 
                     Where LicenseClasses.ClassName = @ClassName; 
