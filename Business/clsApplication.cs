@@ -110,7 +110,7 @@ namespace Business
             return false;
         }
 
-        protected static clsApplication FindBaseApplicationByID(int ApplicationID)
+        public static clsApplication FindBaseApplicationByID(int ApplicationID)
         {
 
             int ApplicationPersonID = -1, ApplicationTypeID = -1, CreatedByUserID = -1;

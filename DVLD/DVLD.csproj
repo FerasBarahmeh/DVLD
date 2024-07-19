@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\Controls\ctrlApplicationBasicInformation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Applications\Controls\ctrlApplicationBasicInformation.Designer.cs">
+      <DependentUpon>ctrlApplicationBasicInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Local Driving License\Controls\ctrlDrivingLicenseApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Applications\Local Driving License\Controls\ctrlDrivingLicenseApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Local Driving License\frmInsertUpdateLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +95,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="General Class\clsAuth.cs" />
+    <Compile Include="General Class\clsFormat.cs" />
     <Compile Include="General Class\clsValidation.cs" />
     <Compile Include="General Class\clsFilesHandler.cs" />
     <Compile Include="People\Controls\ctrlPersonCard.cs">
@@ -122,16 +135,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Tests\frmEditTest.cs">
+    <Compile Include="Tests\frmListTestAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tests\frmEditTest.Designer.cs">
+    <Compile Include="Tests\frmListTestAppointments.Designer.cs">
+      <DependentUpon>frmListTestAppointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\Tests Type\frmEditTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\Tests Type\frmEditTest.Designer.cs">
       <DependentUpon>frmEditTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tests\frmListTypeTests.cs">
+    <Compile Include="Tests\Tests Type\frmListTypeTests.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tests\frmListTypeTests.Designer.cs">
+    <Compile Include="Tests\Tests Type\frmListTypeTests.Designer.cs">
       <DependentUpon>frmListTypeTests.cs</DependentUpon>
     </Compile>
     <Compile Include="User\Controls\ctrlUserCard.cs">
@@ -164,6 +183,12 @@
     <Compile Include="User\frmUserDetails.Designer.cs">
       <DependentUpon>frmUserDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Applications\Controls\ctrlApplicationBasicInformation.resx">
+      <DependentUpon>ctrlApplicationBasicInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Local Driving License\Controls\ctrlDrivingLicenseApplicationInfo.resx">
+      <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\Local Driving License\frmInsertUpdateLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmInsertUpdateLocalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,10 +227,13 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tests\frmEditTest.resx">
+    <EmbeddedResource Include="Tests\frmListTestAppointments.resx">
+      <DependentUpon>frmListTestAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\Tests Type\frmEditTest.resx">
       <DependentUpon>frmEditTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tests\frmListTypeTests.resx">
+    <EmbeddedResource Include="Tests\Tests Type\frmListTypeTests.resx">
       <DependentUpon>frmListTypeTests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Controls\ctrlUserCard.resx">

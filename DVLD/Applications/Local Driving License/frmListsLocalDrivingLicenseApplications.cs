@@ -1,4 +1,5 @@
 ﻿using Business;
+using DVLD.Tests;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -141,6 +142,18 @@ namespace DVLD.Applications.Local_Driving_License
                 scheduleStreetTestToolStripMenuItem.Enabled = PassVisionTest && PassWrittenTest && !PassStreetTest;
             }
             showLicenseToolStripMenuItem.Enabled = clsLocalDrivingLicenseApplication.HasLicense(LocalDrivingLicenseID, LicenseClassID);
+        }
+
+        private void _ScheduleTest(clsTestTypes.enTestType TestType)
+        {
+            int LocalDrivingLicenseApplicationID = (int)dgvListLocalDrivingApplicationLicense.CurrentRow.Cells[0].Value;
+            frmListTestAppointments frm = new frmListTestAppointments(LocalDrivingLicenseApplicationID, TestType);
+            frm.ShowDialog();
+        }
+
+        private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestTypes.enTestType.VisionTest);
         }
     }
 }

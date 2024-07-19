@@ -89,6 +89,46 @@ namespace DVLD_DataAccess_Layer
 
             return IsFounded;
         }
+        public static bool FindNameByID(
+            int LicenseClassID,
+            ref string ClassName
+          )
+        {
+            bool IsFounded = false;
+
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = @"
+                    SELECT 
+	                    LicenseClasses.ClassName
+                    FROM 
+	                    LicenseClasses 
+                    WHERE
+                        LicenseClasses.LicenseClassID = @LicenseClassID; 
+            ";
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    IsFounded = true;
+                    ClassName = (string)reader["ClassName"];
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Can't find license class ID by name: " + ex.Message);
+            }
+            finally { conn.Close(); }
+
+
+            return IsFounded;
+        }
         public static bool FindIDByName(
             string ClassName,
             ref int LicenseClassID
@@ -128,5 +168,6 @@ namespace DVLD_DataAccess_Layer
 
             return IsFounded;
         }
+
     }
 }

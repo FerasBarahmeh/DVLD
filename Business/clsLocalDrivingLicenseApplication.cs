@@ -125,5 +125,14 @@ namespace Business
         {
             return clsLocalDrivingLicenseApplicationData.HasLicense(LocalDrivingLicenseApplicationID, LicenseClassID);
         }
+
+        public int GetActiveLicenseID()
+        {
+            return clsLicenses.GetActiveLicenseIDByPersonID(this.ApplicationPersonID, this.LicenseClassID);
+        }
+        public int GetPassedTestsCount()
+        {
+            return clsTests.GetPassedTestsCount(this.LocalDrivingLicenseApplicationID);
+        }
     }
 }

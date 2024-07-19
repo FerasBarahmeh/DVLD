@@ -50,5 +50,12 @@ namespace Business
             bool flag = clsLicenseClassData.FindIDByName(Name, ref LicenseClassID);
             return flag ? LicenseClassID : -1;
         }
+
+        public static string FindNameByID(int LicenseClassID)
+        {
+            string ClassName = "";
+            bool Flag = clsLicenseClassData.FindNameByID(LicenseClassID, ref ClassName);
+            return ClassName;
+        }
     }
 }

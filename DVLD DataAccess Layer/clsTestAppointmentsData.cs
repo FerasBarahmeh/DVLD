@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DVLD_DataAccess_Layer
 {
-    public class TestAppointmentsData
+    public class clsTestAppointmentsData
     {
         public static DataTable All()
         {
