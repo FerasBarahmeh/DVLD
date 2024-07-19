@@ -44,5 +44,30 @@ namespace DVLD.Tests
             lblRecordCount.Text = _dtLicenseTestAppointments.Rows.Count.ToString();
             _SetColumnsDGV();
         }
+
+        private void btnAddNewAppointment_Click(object sender, System.EventArgs e)
+        {
+            clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindLocalDrivingLicenseApplicationData(_LocalDrivingLicenseApplicationID);
+            if (LocalDrivingLicenseApplication.IsThereAnActiveScheduledTest(_TestType))
+            {
+                MessageBox.Show("Person Already have an active appointment for this test, You cannot add new appointment", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            clsTests LastTest = LocalDrivingLicenseApplication.GetLastTestPerTestType(_TestType);
+
+            if (LastTest == null)
+            {
+
+            }
+
+            if (LastTest.TestResult == true)
+            {
+                MessageBox.Show("This person already passed this test before, you can only retake fails test", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+        }
     }
 }

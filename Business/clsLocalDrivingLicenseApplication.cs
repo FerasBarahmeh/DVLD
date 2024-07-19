@@ -134,5 +134,15 @@ namespace Business
         {
             return clsTests.GetPassedTestsCount(this.LocalDrivingLicenseApplicationID);
         }
+
+        public bool IsThereAnActiveScheduledTest(clsTestTypes.enTestType TestType)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduledTest(this.LocalDrivingLicenseApplicationID, (int)TestType);
+        }
+        public clsTests GetLastTestPerTestType(clsTestTypes.enTestType TestTypeID)
+        {
+            return clsTests.FindLastTestPerPersonAndLicenseClass(this.ApplicationPersonID, this.LicenseClassID, TestTypeID);
+        }
+
     }
 }
