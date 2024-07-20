@@ -16,6 +16,7 @@ namespace DVLD
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmMain(new Auth.frmLogin()));
             Application.Run(new frmListsLocalDrivingLicenseApplications());
+            //Application.Run(new frmListTestAppointments(50, Business.clsTestTypes.enTestType.VisionTest));
         }
     }
 }

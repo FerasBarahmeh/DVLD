@@ -25,7 +25,7 @@ namespace DVLD_DataAccess_Layer
 
             catch (Exception ex)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+                throw new Exception(ex.Message);
             }
             finally
             {

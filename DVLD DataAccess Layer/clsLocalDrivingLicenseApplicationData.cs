@@ -233,7 +233,7 @@ namespace DVLD_DataAccess_Layer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @" 
-                SELECT * 
+                SELECT TOP 1 Found = 1
                 FROM LocalDrivingLicenseApplications
                 INNER JOIN TestAppointments
                 ON TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
@@ -255,7 +255,7 @@ namespace DVLD_DataAccess_Layer
                 connection.Open();
 
                 object result = command.ExecuteScalar();
-                if (result != null) Result = true
+                if (result != null) Result = true;
             }
             catch (Exception ex)
             {
@@ -266,6 +266,88 @@ namespace DVLD_DataAccess_Layer
             }
 
             return Result;
+        }
+        public static bool DoesAttendTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"
+                SELECT Found=1
+                FROM LocalDrivingLicenseApplications
+                INNER JOIN Applications
+                ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID
+                INNER JOIN TestAppointments
+                ON TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
+                INNER JOIN Tests
+                ON  Tests.TestAppointmentID = TestAppointments.TestAppointmentID
+                WHERE TestAppointments.TestTypeID = @TestTypeID  AND LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                ORDER BY TestAppointments.TestAppointmentID DESC;
+            ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null) IsFound = true;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+
+        public static int TotalTrialsPerTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            int TotalTrialsPerTest = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"
+                SELECT TotalTrialsPerTest=COUNT(Tests.TestID)
+                FROM LocalDrivingLicenseApplications
+                INNER JOIN Applications
+                ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID
+                INNER JOIN TestAppointments
+                ON TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
+                INNER JOIN Tests
+                ON  Tests.TestAppointmentID = TestAppointments.TestAppointmentID
+                WHERE TestAppointments.TestTypeID = @TestTypeID  AND LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;
+            ";
+
+            SqlCommand cmd = new SqlCommand(Query, connection);
+
+            cmd.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            cmd.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    TotalTrialsPerTest = (int)reader["TotalTrialsPerTest"];
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return TotalTrialsPerTest;
         }
     }
 }

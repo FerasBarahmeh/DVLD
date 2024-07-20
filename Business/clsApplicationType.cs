@@ -7,21 +7,21 @@ namespace Business
     {
         private enum _enMode { Update, Add }
         private _enMode _Mode;
-        public int ApplicatonTypeID;
-        public string ApplicatonTypeTitle;
+        public int ApplicationTypeID;
+        public string ApplicationTypeTitle;
         public float ApplicationTypeFees;
 
-        public clsApplicationType() 
+        public clsApplicationType()
         {
-            this.ApplicatonTypeID = -1;
-            this.ApplicatonTypeTitle = string.Empty;
+            this.ApplicationTypeID = -1;
+            this.ApplicationTypeTitle = string.Empty;
             this.ApplicationTypeFees = float.MinValue;
             _Mode = _enMode.Add;
         }
-        public clsApplicationType(int ApplicatonTypeID, string ApplicatonTypeTitle, float ApplicationTypeFees)
+        public clsApplicationType(int ApplicationTypeID, string ApplicationTypeTitle, float ApplicationTypeFees)
         {
-            this.ApplicatonTypeID = ApplicatonTypeID;
-            this.ApplicatonTypeTitle = ApplicatonTypeTitle;
+            this.ApplicationTypeID = ApplicationTypeID;
+            this.ApplicationTypeTitle = ApplicationTypeTitle;
             this.ApplicationTypeFees = ApplicationTypeFees;
             _Mode = _enMode.Update;
         }
@@ -30,18 +30,18 @@ namespace Business
             return clsApplicationTypesData.All();
         }
 
-        public static clsApplicationType Find(int ApplicatonTypeID)
+        public static clsApplicationType Find(int ApplicationTypeID)
         {
-            string ApplicatonTypeTitle  = ""; float ApplicationTypeFees = float.MinValue;
-            if (clsApplicationTypesData.Find(ApplicatonTypeID, ref ApplicatonTypeTitle, ref ApplicationTypeFees))
-                return new clsApplicationType(ApplicatonTypeID, ApplicatonTypeTitle, ApplicationTypeFees);
-          
+            string ApplicationTypeTitle = ""; float ApplicationTypeFees = float.MinValue;
+            if (clsApplicationTypesData.Find(ApplicationTypeID, ref ApplicationTypeTitle, ref ApplicationTypeFees))
+                return new clsApplicationType(ApplicationTypeID, ApplicationTypeTitle, ApplicationTypeFees);
+
             return null;
         }
 
         private bool _Update()
         {
-            return clsApplicationTypesData.Update(ApplicatonTypeID, ApplicatonTypeTitle, ApplicationTypeFees);
+            return clsApplicationTypesData.Update(ApplicationTypeID, ApplicationTypeTitle, ApplicationTypeFees);
         }
 
         public bool Save()

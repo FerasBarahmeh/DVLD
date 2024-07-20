@@ -36,7 +36,7 @@ namespace DVLD.Applications.Controls
             _ApplicationID = _Application.ApplicationID;
             lblApplicationID.Text = _Application.ApplicationID.ToString();
             lblStatus.Text = _Application.ApplicationStatus.ToString();
-            lblType.Text = _Application.ApplicationType.ApplicatonTypeTitle;
+            lblType.Text = _Application.ApplicationType.ApplicationTypeTitle;
             lblFees.Text = _Application.PaidFees.ToString();
             lblApplicant.Text = _Application.ApplicationPersonID.ToString();
             lblDate.Text = clsFormat.DateToShort(_Application.ApplicationDate);

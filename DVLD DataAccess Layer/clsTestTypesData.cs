@@ -1,7 +1,7 @@
 ﻿
-using System.Data.SqlClient;
-using System.Data;
 using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace DVLD_DataAccess_Layer
 {
@@ -73,7 +73,7 @@ namespace DVLD_DataAccess_Layer
 
             return IsFound;
         }
-        public static bool Update(int TestTypeID, string TestTypeTitle, string TestTypeDescription,  string TestTypeFees)
+        public static bool Update(int TestTypeID, string TestTypeTitle, string TestTypeDescription, string TestTypeFees)
         {
             int RowAffected = 0;
 
@@ -96,13 +96,12 @@ namespace DVLD_DataAccess_Layer
             }
             catch (Exception ex)
             {
-                throw new Exception("Can't update Applicaton Type " + ex.Message);
+                throw new Exception("Can't update Application Type " + ex.Message);
             }
             finally { conn.Close(); }
 
             return (RowAffected > 0);
         }
-
         public static bool IsExist(string TestTypeTitle)
         {
             bool IsFound = false;
@@ -129,6 +128,40 @@ namespace DVLD_DataAccess_Layer
             }
             finally { conn.Close(); }
             return IsFound;
+        }
+        public static float FindFeesByID(int TestTypeID)
+        {
+            float TestTypeFees = float.MinValue;
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = @"
+                    SELECT TestTypeFees
+                    FROM TestTypes 
+                    WHERE TestTypeID = @TestTypeID;
+            ";
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    if (reader["TestTypeFees"] != DBNull.Value && float.TryParse(reader["TestTypeFees"].ToString(), out float value))
+                    {
+                        TestTypeFees = value;
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Can't find TestTypeFees TestTypeFees: " + ex.Message);
+            }
+            finally { conn.Close(); }
+
+            return TestTypeFees;
         }
     }
 }

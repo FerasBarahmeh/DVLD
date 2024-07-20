@@ -54,11 +54,15 @@ namespace DVLD.Tests
                 return;
             }
 
+
             clsTests LastTest = LocalDrivingLicenseApplication.GetLastTestPerTestType(_TestType);
 
             if (LastTest == null)
             {
-
+                frmScheduleTest frmScheduleTest = new frmScheduleTest(LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID, _TestType);
+                frmScheduleTest.ShowDialog();
+                frmListTestAppointments_Load(null, null);
+                return;
             }
 
             if (LastTest.TestResult == true)
@@ -66,8 +70,19 @@ namespace DVLD.Tests
                 MessageBox.Show("This person already passed this test before, you can only retake fails test", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
 
+        private void editToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            int AppointmentID = (int)dgvLicenseTestAppointments.CurrentRow.Cells[0].Value;
 
+            frmScheduleTest frm = new frmScheduleTest(_LocalDrivingLicenseApplicationID, _TestType, AppointmentID);
+            frm.ShowDialog();
+            frmListTestAppointments_Load(null, null);
+        }
+        private void btnClose_Click(object sender, System.EventArgs e)
+        {
+            Close();
         }
     }
 }

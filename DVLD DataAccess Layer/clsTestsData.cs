@@ -65,16 +65,16 @@ namespace DVLD_DataAccess_Layer
                 ON TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
                 INNER JOIN Applications
                 ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
-                WHERE LocalDrivingLicenseApplications.LicenseClassID = 1 
-                AND Applications.ApplicantPersonID = 1
-                AND TestAppointments.TestTypeID = 1
+                WHERE LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID
+                AND Applications.ApplicantPersonID = @ApplicantPersonID
+                AND TestAppointments.TestTypeID = @TestTypeID
                 ORDER BY Tests.TestID 
                 DESC;
             ";
 
             SqlCommand command = new SqlCommand(Query, connection);
 
-            command.Parameters.AddWithValue("@PersonID", PersonID);
+            command.Parameters.AddWithValue("@ApplicantPersonID", PersonID);
             command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
             command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
 

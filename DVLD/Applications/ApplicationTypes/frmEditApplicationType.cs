@@ -19,7 +19,7 @@ namespace DVLD.ApplicationTypes
         private void _FillControlValues()
         {
             lblApplicationTypeID.Text = _ApplicationTypeID.ToString();
-            txtTitle.Text = _ApplicationType.ApplicatonTypeTitle;
+            txtTitle.Text = _ApplicationType.ApplicationTypeTitle;
             txtFees.Text = _ApplicationType.ApplicationTypeFees.ToString();
         }
 
@@ -44,7 +44,7 @@ namespace DVLD.ApplicationTypes
 
             if (string.IsNullOrEmpty(Value))
                 ErrorMessage = "Title is required.";
-            if (Value != _ApplicationType.ApplicatonTypeTitle && clsApplicationType.IsExist(Value))
+            if (Value != _ApplicationType.ApplicationTypeTitle && clsApplicationType.IsExist(Value))
                 ErrorMessage = "This title application type already used";
 
             _FireError(Input, ErrorMessage);
@@ -79,7 +79,7 @@ namespace DVLD.ApplicationTypes
                 return;
             }
 
-            _ApplicationType.ApplicatonTypeTitle = txtTitle.Text.Trim();
+            _ApplicationType.ApplicationTypeTitle = txtTitle.Text.Trim();
             if (float.TryParse(txtFees.Text, out float value))
                 _ApplicationType.ApplicationTypeFees = value;
 

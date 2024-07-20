@@ -66,5 +66,9 @@ namespace Business
         {
             return clsTestTypesData.IsExist(TestTypeTitle);
         }
+        public static float FindFeesByID(clsTestTypes.enTestType TestID)
+        {
+            return clsTestTypesData.FindFeesByID((int)TestID);
+        }
     }
 }
