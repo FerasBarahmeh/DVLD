@@ -136,7 +136,7 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(216, 427);
+            this.lblDate.Location = new System.Drawing.Point(146, 427);
             this.lblDate.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(142, 25);
@@ -157,11 +157,11 @@
             // lblDrivingClass
             // 
             this.lblDrivingClass.AutoSize = true;
-            this.lblDrivingClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDrivingClass.Location = new System.Drawing.Point(216, 304);
+            this.lblDrivingClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDrivingClass.Location = new System.Drawing.Point(178, 304);
             this.lblDrivingClass.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.lblDrivingClass.Name = "lblDrivingClass";
-            this.lblDrivingClass.Size = new System.Drawing.Size(110, 25);
+            this.lblDrivingClass.Size = new System.Drawing.Size(99, 22);
             this.lblDrivingClass.TabIndex = 171;
             this.lblDrivingClass.Text = "[???????]";
             // 
@@ -191,7 +191,7 @@
             // 
             this.lblLocalDrivingLicenseAppID.AutoSize = true;
             this.lblLocalDrivingLicenseAppID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocalDrivingLicenseAppID.Location = new System.Drawing.Point(216, 268);
+            this.lblLocalDrivingLicenseAppID.Location = new System.Drawing.Point(187, 267);
             this.lblLocalDrivingLicenseAppID.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.lblLocalDrivingLicenseAppID.Name = "lblLocalDrivingLicenseAppID";
             this.lblLocalDrivingLicenseAppID.Size = new System.Drawing.Size(50, 25);
@@ -212,11 +212,11 @@
             // lblFullName
             // 
             this.lblFullName.AutoSize = true;
-            this.lblFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFullName.Location = new System.Drawing.Point(216, 343);
+            this.lblFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.Location = new System.Drawing.Point(157, 343);
             this.lblFullName.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(110, 25);
+            this.lblFullName.Size = new System.Drawing.Size(99, 22);
             this.lblFullName.TabIndex = 165;
             this.lblFullName.Text = "[???????]";
             // 
@@ -246,7 +246,7 @@
             // 
             this.lblTrial.AutoSize = true;
             this.lblTrial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrial.Location = new System.Drawing.Point(216, 385);
+            this.lblTrial.Location = new System.Drawing.Point(157, 385);
             this.lblTrial.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.lblTrial.Name = "lblTrial";
             this.lblTrial.Size = new System.Drawing.Size(50, 25);

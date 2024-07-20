@@ -36,12 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddNewAppointment = new System.Windows.Forms.Button();
             this.dgvLicenseTestAppointments = new System.Windows.Forms.DataGridView();
+            this.cmsAppointmentOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiEditTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTackTest = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblRecordCount = new System.Windows.Forms.Label();
-            this.cmsAppointmentOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tackTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ctrlDrivingLicenseApplicationInfo = new DVLD.Applications.Local_Driving_License.Controls.ctrlDrivingLicenseApplicationInfo();
             ((System.ComponentModel.ISupportInitialize)(this.pbTestTypeImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLicenseTestAppointments)).BeginInit();
@@ -122,6 +122,31 @@
             this.dgvLicenseTestAppointments.TabIndex = 140;
             this.dgvLicenseTestAppointments.TabStop = false;
             // 
+            // cmsAppointmentOptions
+            // 
+            this.cmsAppointmentOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsAppointmentOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiEditTool,
+            this.tsmiTackTest});
+            this.cmsAppointmentOptions.Name = "cmsAppointmentOptions";
+            this.cmsAppointmentOptions.Size = new System.Drawing.Size(215, 84);
+            // 
+            // tsmiEditTool
+            // 
+            this.tsmiEditTool.Image = global::DVLD.Properties.Resources.edit_32;
+            this.tsmiEditTool.Name = "tsmiEditTool";
+            this.tsmiEditTool.Size = new System.Drawing.Size(214, 26);
+            this.tsmiEditTool.Text = "Edit";
+            this.tsmiEditTool.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // tsmiTackTest
+            // 
+            this.tsmiTackTest.Image = global::DVLD.Properties.Resources.Test_32;
+            this.tsmiTackTest.Name = "tsmiTackTest";
+            this.tsmiTackTest.Size = new System.Drawing.Size(214, 26);
+            this.tsmiTackTest.Text = "Tack Test";
+            this.tsmiTackTest.Click += new System.EventHandler(this.tackTestToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -155,30 +180,6 @@
             this.lblRecordCount.Size = new System.Drawing.Size(14, 16);
             this.lblRecordCount.TabIndex = 143;
             this.lblRecordCount.Text = "?";
-            // 
-            // cmsAppointmentOptions
-            // 
-            this.cmsAppointmentOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsAppointmentOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.tackTestToolStripMenuItem});
-            this.cmsAppointmentOptions.Name = "cmsAppointmentOptions";
-            this.cmsAppointmentOptions.Size = new System.Drawing.Size(215, 84);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Image = global::DVLD.Properties.Resources.edit_32;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // tackTestToolStripMenuItem
-            // 
-            this.tackTestToolStripMenuItem.Image = global::DVLD.Properties.Resources.Test_32;
-            this.tackTestToolStripMenuItem.Name = "tackTestToolStripMenuItem";
-            this.tackTestToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
-            this.tackTestToolStripMenuItem.Text = "Tack Test";
             // 
             // ctrlDrivingLicenseApplicationInfo
             // 
@@ -227,7 +228,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblRecordCount;
         private System.Windows.Forms.ContextMenuStrip cmsAppointmentOptions;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tackTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditTool;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTackTest;
     }
 }

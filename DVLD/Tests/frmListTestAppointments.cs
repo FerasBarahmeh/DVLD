@@ -37,12 +37,20 @@ namespace DVLD.Tests
             }
         }
 
+        private void _SetStatusForOptionButtons()
+        {
+            bool IsLocked = !(bool)dgvLicenseTestAppointments.CurrentRow.Cells[3].Value;
+            tsmiTackTest.Enabled = IsLocked;
+            tsmiEditTool.Enabled = IsLocked;
+        }
+
         private void frmListTestAppointments_Load(object sender, System.EventArgs e)
         {
             _dtLicenseTestAppointments = clsTestAppointments.GetApplicationTestAppointmentsPerTestType(_LocalDrivingLicenseApplicationID, _TestType);
             dgvLicenseTestAppointments.DataSource = _dtLicenseTestAppointments;
             lblRecordCount.Text = _dtLicenseTestAppointments.Rows.Count.ToString();
             _SetColumnsDGV();
+            _SetStatusForOptionButtons();
         }
 
         private void btnAddNewAppointment_Click(object sender, System.EventArgs e)
@@ -70,6 +78,7 @@ namespace DVLD.Tests
                 MessageBox.Show("This person already passed this test before, you can only retake fails test", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
         }
 
         private void editToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -83,6 +92,14 @@ namespace DVLD.Tests
         private void btnClose_Click(object sender, System.EventArgs e)
         {
             Close();
+        }
+
+        private void tackTestToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            int AppointmentID = (int)dgvLicenseTestAppointments.CurrentRow.Cells[0].Value;
+
+            frmTackTest frm = new frmTackTest(_LocalDrivingLicenseApplicationID, _TestType, AppointmentID);
+            frm.ShowDialog();
         }
     }
 }

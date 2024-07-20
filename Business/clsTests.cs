@@ -66,5 +66,42 @@ namespace Business
             return null;
 
         }
+        private bool _InsertTest()
+        {
+            this.TestID = clsTestsData.Insert(this.TestAppointmentID,
+                this.TestResult, this.Notes, this.CreatedByUserID);
+
+            return (this.TestID != -1);
+        }
+        private bool _UpdateTest()
+        {
+            return clsTestsData.Update(this.TestID, this.TestAppointmentID,
+                this.TestResult, this.Notes, this.CreatedByUserID);
+        }
+        public bool Save()
+        {
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_InsertTest())
+                    {
+
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                case enMode.Update:
+
+                    return _UpdateTest();
+
+            }
+
+            return false;
+        }
+
     }
 }
