@@ -73,7 +73,7 @@ namespace DVLD.Tests.Controls
             {
                 IsRetackSchedule = true;
                 gbRetackTestInfo.Enabled = true;
-                lblDLAppID.Text = clsApplicationType.Find(_LocalDrivingLicenseApplication.ApplicationType.ApplicationTypeID).ApplicationTypeFees.ToString();
+                lblDLAppID.Text = clsApplicationType.Find(_LocalDrivingLicenseApplication.ApplicationTypeID).ApplicationTypeFees.ToString();
                 lblFeesRetackTest.Text = "";
             }
             else
@@ -108,7 +108,6 @@ namespace DVLD.Tests.Controls
             else
             {
                 _AppointmentID = AppointmentID;
-                MessageBox.Show(_AppointmentID.ToString());
                 _Appointment = clsTestAppointments.Find(_AppointmentID);
 
             }
