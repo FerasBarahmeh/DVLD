@@ -127,11 +127,9 @@ namespace DVLD.Applications.Local_Driving_License
         {
             int LocalDrivingLicenseID = (int)dgvListLocalDrivingApplicationLicense.CurrentRow.Cells[0].Value;
             string ClassName = (string)dgvListLocalDrivingApplicationLicense.CurrentRow.Cells[1].Value;
-
             int LicenseClassID = clsLicenseClass.FindIDByName(ClassName);
-            bool HasLicense = clsLocalDrivingLicenseApplication.HasLicense(LocalDrivingLicenseID, LicenseClassID);
-
             clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindLocalDrivingLicenseApplicationData(LocalDrivingLicenseID);
+            bool HasLicense = LocalDrivingLicenseApplication.HasLicense(LicenseClassID);
 
             bool PassVisionTest = clsLocalDrivingLicenseApplication.IsPassTestType(LocalDrivingLicenseID, (int)clsTestTypes.enTestType.VisionTest);
             bool PassWrittenTest = clsLocalDrivingLicenseApplication.IsPassTestType(LocalDrivingLicenseID, (int)clsTestTypes.enTestType.WrittenTest);
@@ -139,20 +137,17 @@ namespace DVLD.Applications.Local_Driving_License
 
             stmiScheduleTests.Enabled = (!PassStreetTest || !PassWrittenTest || !PassVisionTest) && LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New;
 
-            tsmiCancelApplicaiton.Enabled = !HasLicense;
-            tsmiDeleteApplication.Enabled = !HasLicense;
-            tsmiEdit.Enabled = !HasLicense;
-            tsmiIssueDrivingLicenseFirstTime.Enabled = HasLicense;
-            tsmiShowLicense.Enabled = HasLicense;
-
-
             if (cmsApplications.Enabled)
             {
                 scheduleVisionTestToolStripMenuItem.Enabled = !PassVisionTest;
                 scheduleWrittenTestToolStripMenuItem.Enabled = PassVisionTest && !PassWrittenTest;
                 scheduleStreetTestToolStripMenuItem.Enabled = PassVisionTest && PassWrittenTest && !PassStreetTest;
             }
-            tsmiShowLicense.Enabled = clsLocalDrivingLicenseApplication.HasLicense(LocalDrivingLicenseID, LicenseClassID);
+            tsmiCancelApplicaiton.Enabled = !HasLicense;
+            tsmiDeleteApplication.Enabled = !HasLicense;
+            tsmiEdit.Enabled = !HasLicense;
+            tsmiIssueDrivingLicenseFirstTime.Enabled = !HasLicense;
+            tsmiShowLicense.Enabled = HasLicense;
         }
 
         private void _ScheduleTest(clsTestTypes.enTestType TestType)

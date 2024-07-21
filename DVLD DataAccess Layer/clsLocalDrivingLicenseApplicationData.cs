@@ -211,9 +211,9 @@ namespace DVLD_DataAccess_Layer
 
                 object result = command.ExecuteScalar();
 
-                if (result != null && bool.TryParse(result.ToString(), out bool returnedResult))
+                if (result != null && int.TryParse(result.ToString(), out int returnedResult))
                 {
-                    Found = returnedResult;
+                    Found = (returnedResult == 1);
                 }
             }
             catch (Exception ex)
