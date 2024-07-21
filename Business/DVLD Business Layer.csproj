@@ -46,10 +46,11 @@
     <Compile Include="clsApplication.cs" />
     <Compile Include="clsApplicationType.cs" />
     <Compile Include="clsCountry.cs" />
+    <Compile Include="clsDriver.cs" />
     <Compile Include="clsLicenseClass.cs" />
     <Compile Include="clsLicenses.cs" />
     <Compile Include="clsLocalDrivingLicenseApplication.cs" />
-    <Compile Include="clsPersone.cs" />
+    <Compile Include="clsPerson.cs" />
     <Compile Include="clsTestAppointments.cs" />
     <Compile Include="clsTests.cs" />
     <Compile Include="clsTestTypes.cs" />

@@ -133,5 +133,10 @@ namespace Business
 
             return null;
         }
+
+        public static bool UpdateStatus(int ApplicationID, short NewStatus)
+        {
+            return clsApplicationData.UpdateStatus(ApplicationID, NewStatus);
+        }
     }
 }

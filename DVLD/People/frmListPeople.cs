@@ -9,7 +9,7 @@ namespace DVLD.People
     public partial class frmListPeople : Form
     {
 
-        private static DataTable _AllPeople = clsPersone.GetAllPeople();
+        private static DataTable _AllPeople = clsPerson.GetAllPeople();
         private DataTable _Peoples = _AllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo", "FirstName", "SecondName", "ThirdName", "LastName", "GenderName", "DateOfBirth", "CountryName", "Phone", "Email");
         private enum FilterColumns { NoFilter = 0, PersonID = 1, NationalNo = 2, FirstName = 3, SecondName = 4, ThirdName = 5, LastName = 6, Nationality = 7, Gender = 8, Phone = 9, Email = 10 };
 
@@ -77,7 +77,7 @@ namespace DVLD.People
 
         private void _RefreshDGV()
         {
-            _AllPeople = clsPersone.GetAllPeople();
+            _AllPeople = clsPerson.GetAllPeople();
             _Peoples = _AllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
                                                        "FirstName", "SecondName", "ThirdName", "LastName",
                                                        "GenderName", "DateOfBirth", "CountryName",
@@ -130,7 +130,7 @@ namespace DVLD.People
             {
                 try
                 {
-                    if (clsPersone.Delete(PersonID))
+                    if (clsPerson.Delete(PersonID))
                     {
                         MessageBox.Show($"Success Delete Person {PersonID}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         _RefreshDGV();

@@ -35,7 +35,7 @@ namespace DVLD.User
                 return false;
             }
 
-            if (_Mode == _enMode.Add && clsPersone.IsUser(ctrlUserCardWithFilter.SelectedPerson.PersonID))
+            if (_Mode == _enMode.Add && clsPerson.IsUser(ctrlUserCardWithFilter.SelectedPerson.PersonID))
             {
                 MessageBox.Show("The Person Has ID " + ctrlUserCardWithFilter.SelectedPerson.PersonID + " is already has user privilege",
                     "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

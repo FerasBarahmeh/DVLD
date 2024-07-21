@@ -1,11 +1,10 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace DVLD_DataAccess_Layer
 {
-    public class clsPersoneData
+    public class clsPersonData
     {
         public static DataTable All()
         {
@@ -90,7 +89,7 @@ namespace DVLD_DataAccess_Layer
         {
             bool IsFound = false;
 
-            
+
 
             SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string Query = "SELECT * FROM People WHERE NationalNo = @NationalNo;";
@@ -246,7 +245,8 @@ namespace DVLD_DataAccess_Layer
             catch (Exception ex)
             {
                 throw new Exception("Database error: " + ex.Message, ex);
-            } finally { conn.Close(); }
+            }
+            finally { conn.Close(); }
 
             return (affected == 1);
         }
@@ -259,7 +259,7 @@ namespace DVLD_DataAccess_Layer
             SqlCommand cmd = new SqlCommand(Query, conn);
             cmd.Parameters.AddWithValue("@NationalNo", PersonNationalNo);
 
-            bool IsFound=false;
+            bool IsFound = false;
             try
             {
                 conn.Open();
@@ -294,7 +294,8 @@ namespace DVLD_DataAccess_Layer
             catch (Exception ex)
             {
                 throw new Exception("Database Delete Person Error " + ex.Message, ex);
-            } finally { conn.Close(); }
+            }
+            finally { conn.Close(); }
 
             return RowAffected > 0;
         }
@@ -327,6 +328,61 @@ namespace DVLD_DataAccess_Layer
             finally { conn.Close(); }
 
             return IsFound;
+        }
+        public static bool IsDriver(int PersonID)
+        {
+            bool IsFound = false;
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = @"
+                SELECT Found=1
+                FROM Drivers
+                WHERE PersonID = @PersonID;
+            ";
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader Reader = cmd.ExecuteReader();
+                IsFound = Reader.HasRows;
+                Reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Can't know if person is user : " + ex.Message);
+            }
+            finally { conn.Close(); }
+
+            return IsFound;
+        }
+        public static int GetDriverIDByPersonID(int PersonID)
+        {
+            int DriverID = -1;
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = @"
+                SELECT Drivers.DriverID
+                FROM Drivers
+                WHERE PersonID = @PersonID;
+            ";
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader Reader = cmd.ExecuteReader();
+
+                if (Reader.Read())
+                    DriverID = (int)Reader["DriverID"];
+                Reader.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally { conn.Close(); }
+
+            return DriverID;
         }
     }
 }

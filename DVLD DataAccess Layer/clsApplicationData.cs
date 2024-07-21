@@ -1,6 +1,6 @@
-﻿using System.Data.SqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace DVLD_DataAccess_Layer
 {
@@ -165,7 +165,7 @@ namespace DVLD_DataAccess_Layer
                     if (float.TryParse(reader["PaidFees"].ToString(), out float PaidFeesFloat))
                         PaidFees = PaidFeesFloat;
                     CreatedByUserID = (int)reader["CreatedByUserID"];
-                    
+
                 }
                 reader.Close();
             }
@@ -178,6 +178,40 @@ namespace DVLD_DataAccess_Layer
 
 
             return IsFound;
+        }
+
+        public static bool UpdateStatus(int ApplicationID, short NewStatus)
+        {
+            int RowsAffected = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string Query = @"
+                Update  Applications  
+                SET ApplicationStatus = @NewStatus, LastStatusDate = @LastStatusDate
+                WHERE ApplicationID=@ApplicationID;
+            ";
+
+            SqlCommand command = new SqlCommand(Query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            command.Parameters.AddWithValue("@NewStatus", NewStatus);
+            command.Parameters.AddWithValue("LastStatusDate", DateTime.Now);
+
+            try
+            {
+                connection.Open();
+                RowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (RowsAffected > 0);
         }
     }
 }

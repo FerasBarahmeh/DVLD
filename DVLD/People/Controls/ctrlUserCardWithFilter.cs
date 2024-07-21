@@ -12,7 +12,7 @@ namespace DVLD.People.Controls
             get { return ctrlPersoneCard.Person.PersonID; }
         }
 
-        public clsPersone SelectedPerson
+        public clsPerson SelectedPerson
         {
             get { return ctrlPersoneCard.Person; }
         }

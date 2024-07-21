@@ -14,7 +14,7 @@ namespace DVLD.People
         public delegate void DataBackEventHandler(object sender, int PersonID);
         public event DataBackEventHandler DataBack;
 
-        private clsPersone _Person;
+        private clsPerson _Person;
 
         private int _PersonID = -1;
         private enum Mode { Add = 0, Edit = 1 }
@@ -51,7 +51,7 @@ namespace DVLD.People
             if (_Mode == Mode.Add)
             {
                 lblTitle.Text = "Add New Person";
-                _Person = new clsPersone();
+                _Person = new clsPerson();
             }
             else
                 lblTitle.Text = "Update Person";
@@ -78,7 +78,7 @@ namespace DVLD.People
 
         private void _LoadData()
         {
-            _Person = clsPersone.Find(_PersonID);
+            _Person = clsPerson.Find(_PersonID);
 
             if (_Person == null)
             {
@@ -87,10 +87,10 @@ namespace DVLD.People
                 return;
             }
 
-            txtFirstName.Text = _Person.FirstaName;
-            txtSecoundName.Text = _Person.SectoundName;
+            txtFirstName.Text = _Person.FirstName;
+            txtSecoundName.Text = _Person.SecundName;
             txtThirdName.Text = _Person.ThirdName;
-            txtLastName.Text = _Person.LastaName;
+            txtLastName.Text = _Person.LastName;
             txtNationalNo.Text = _Person.NationalNo;
             rbMale.Checked = _Person.Gender == 0;
             rbFemale.Checked = _Person.Gender == 1;
@@ -174,7 +174,7 @@ namespace DVLD.People
             if (string.IsNullOrEmpty(temp.Text.Trim()))
                 Message = "Can't be Empty Value";
 
-            if (_Person.NationalNo != txtNationalNo.Text && clsPersone.IsPersonExist(temp.Text.Trim()))
+            if (_Person.NationalNo != txtNationalNo.Text && clsPerson.IsPersonExist(temp.Text.Trim()))
                 Message = "This national No. is used";
 
             if (!string.IsNullOrEmpty(Message))
@@ -250,9 +250,9 @@ namespace DVLD.People
 
             int NationalityCountryID = clsCountry.Find(cbCountry.Text).CountryID;
 
-            _Person.FirstaName = txtFirstName.Text.Trim();
-            _Person.LastaName = txtLastName.Text.Trim();
-            _Person.SectoundName = txtSecoundName.Text.Trim();
+            _Person.FirstName = txtFirstName.Text.Trim();
+            _Person.LastName = txtLastName.Text.Trim();
+            _Person.SecundName = txtSecoundName.Text.Trim();
             _Person.ThirdName = txtThirdName.Text.Trim();
             _Person.NationalNo = txtNationalNo.Text.Trim();
             _Person.Address = txtAddress.Text.Trim();

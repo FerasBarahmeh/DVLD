@@ -1,22 +1,22 @@
-﻿using System;
+﻿using DVLD_DataAccess_Layer;
+using System;
 using System.Data;
-using DVLD_DataAccess_Layer;
 
 
 namespace Business
 {
-    public class clsPersone
+    public class clsPerson
     {
         public enum enMode { Update = 0, Add = 1 }
         private enMode Mode { get; set; }
         public int PersonID { get; set; }
-        public string FirstaName { get; set; }
-        public string LastaName { get; set; }
-        public string SectoundName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string SecundName { get; set; }
         public string ThirdName { get; set; }
         public string FullName
         {
-            get { return FirstaName + ' ' + SectoundName + ' ' + LastaName + ' ' + LastaName; }
+            get { return FirstName + ' ' + SecundName + ' ' + LastName + ' ' + LastName; }
         }
         public string NationalNo { get; set; }
         public DateTime DataOfBirth { get; set; }
@@ -29,13 +29,13 @@ namespace Business
 
         public clsCountry CountryInformation { get; set; }
 
-        public clsPersone()
+        public clsPerson()
         {
             this.Mode = enMode.Add;
             this.PersonID = -1;
-            this.FirstaName = string.Empty;
-            this.LastaName = string.Empty;
-            this.SectoundName = string.Empty;
+            this.FirstName = string.Empty;
+            this.LastName = string.Empty;
+            this.SecundName = string.Empty;
             this.ThirdName = string.Empty;
             this.NationalNo = string.Empty;
             this.DataOfBirth = DateTime.MinValue;
@@ -48,13 +48,13 @@ namespace Business
             this.CountryInformation = null;
         }
 
-        public clsPersone(int personID, string firstaName, string lastaName, string sectoundName, string thirdName, string nationalNo, DateTime dataOfBirth, short gender, string address, string phone, string email, string imagePath, int nationalCountyID)
+        public clsPerson(int personID, string firstaName, string lastaName, string sectoundName, string thirdName, string nationalNo, DateTime dataOfBirth, short gender, string address, string phone, string email, string imagePath, int nationalCountyID)
         {
             Mode = enMode.Update;
             this.PersonID = personID;
-            this.FirstaName = firstaName;
-            this.LastaName = lastaName;
-            this.SectoundName = sectoundName;
+            this.FirstName = firstaName;
+            this.LastName = lastaName;
+            this.SecundName = sectoundName;
             this.ThirdName = thirdName;
             this.NationalNo = nationalNo;
             this.DataOfBirth = dataOfBirth;
@@ -69,59 +69,59 @@ namespace Business
 
         public static DataTable GetAllPeople()
         {
-            return clsPersoneData.All();
+            return clsPersonData.All();
         }
 
-        public static clsPersone Find(int PersonID)
+        public static clsPerson Find(int PersonID)
         {
-            string FirstName = "", LastaName = "", SecoundName = "", ThirdName = "", NationalNo = "", Address = "", Phone = "", Email = "", ImagePath = "";
-            DateTime DOB= DateTime.MinValue; 
+            string FirstName = "", LastName = "", SecoundName = "", ThirdName = "", NationalNo = "", Address = "", Phone = "", Email = "", ImagePath = "";
+            DateTime DOB = DateTime.MinValue;
             short Gender = 0; int NationalCountyID = -1;
 
-            bool IsFound = clsPersoneData.GetPersonInfoByID(
+            bool IsFound = clsPersonData.GetPersonInfoByID(
                             PersonID, ref FirstName, ref SecoundName, ref ThirdName,
-                            ref LastaName, ref NationalNo, ref DOB, ref Gender, 
+                            ref LastName, ref NationalNo, ref DOB, ref Gender,
                             ref Address, ref Phone, ref Email, ref NationalCountyID, ref ImagePath);
 
             return IsFound
-                ? new clsPersone(PersonID, FirstName, LastaName, SecoundName, ThirdName, NationalNo, DOB, Gender, Address, Phone, Email, ImagePath, NationalCountyID) : null;
+                ? new clsPerson(PersonID, FirstName, LastName, SecoundName, ThirdName, NationalNo, DOB, Gender, Address, Phone, Email, ImagePath, NationalCountyID) : null;
         }
 
-        public static clsPersone Find(string NationalNo)
+        public static clsPerson Find(string NationalNo)
         {
-            string FirstName = "", LastaName = "", SecoundName = "", ThirdName = "", Address = "", Phone = "", Email = "", ImagePath = "";
+            string FirstName = "", LastName = "", SecoundName = "", ThirdName = "", Address = "", Phone = "", Email = "", ImagePath = "";
             DateTime DOB = DateTime.MinValue;
             short Gender = 0; int NationalCountyID = -1, PersonID = -1;
 
-            bool IsFound = clsPersoneData.GetPersonInfoByNationalNo(
+            bool IsFound = clsPersonData.GetPersonInfoByNationalNo(
                             NationalNo, ref PersonID, ref FirstName, ref SecoundName, ref ThirdName,
-                            ref LastaName, ref DOB, ref Gender, ref Address, ref Phone, ref Email, ref NationalCountyID, ref ImagePath);
+                            ref LastName, ref DOB, ref Gender, ref Address, ref Phone, ref Email, ref NationalCountyID, ref ImagePath);
 
             return IsFound
-                ? new clsPersone(PersonID, FirstName, LastaName, SecoundName, ThirdName, NationalNo, DOB, Gender, Address, Phone, Email, ImagePath, NationalCountyID) : null;
+                ? new clsPerson(PersonID, FirstName, LastName, SecoundName, ThirdName, NationalNo, DOB, Gender, Address, Phone, Email, ImagePath, NationalCountyID) : null;
         }
 
         public static bool IsPersonExist(string PersonNationalNo)
         {
-            return clsPersoneData.IsPersonExist(PersonNationalNo);
+            return clsPersonData.IsPersonExist(PersonNationalNo);
         }
 
         private bool _Update()
         {
             return
-                clsPersoneData.Update(this.PersonID, this.FirstaName, this.SectoundName, this.ThirdName, this.LastaName, this.NationalNo, this.DataOfBirth, this.Gender, this.Address, this.Phone, this.Email, this.NationalCountyID, this.ImagePath);
+                clsPersonData.Update(this.PersonID, this.FirstName, this.SecundName, this.ThirdName, this.LastName, this.NationalNo, this.DataOfBirth, this.Gender, this.Address, this.Phone, this.Email, this.NationalCountyID, this.ImagePath);
         }
 
         private bool _Add()
         {
-            PersonID = clsPersoneData.Insert(
-                this.FirstaName, this.SectoundName, this.ThirdName, 
-                this.LastaName, this.NationalNo, this.DataOfBirth, 
-               (short) this.Gender, this.Address, this.Phone, this.Email, 
+            PersonID = clsPersonData.Insert(
+                this.FirstName, this.SecundName, this.ThirdName,
+                this.LastName, this.NationalNo, this.DataOfBirth,
+               (short)this.Gender, this.Address, this.Phone, this.Email,
                 this.NationalCountyID, this.ImagePath);
 
             return (PersonID != -1);
-                
+
         }
 
         public bool Save()
@@ -141,15 +141,23 @@ namespace Business
             }
             return false;
         }
-        
+
         public static bool Delete(int PersonID)
         {
-            return clsPersoneData.Delete(PersonID);
+            return clsPersonData.Delete(PersonID);
         }
 
         public static bool IsUser(int PersonID)
         {
-            return clsPersoneData.IsUser(PersonID);
+            return clsPersonData.IsUser(PersonID);
+        }
+        public static bool IsDriver(int PersonID)
+        {
+            return clsPersonData.IsDriver(PersonID);
+        }
+        public static int GetDriverIDByPersonID(int PersonID)
+        {
+            return clsPersonData.GetDriverIDByPersonID(PersonID);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Business
         {
             get
             {
-                return clsPersone.Find(ApplicationPersonID).FullName;
+                return clsPerson.Find(ApplicationPersonID).FullName;
             }
         }
         public clsLocalDrivingLicenseApplication()
@@ -150,6 +150,47 @@ namespace Business
         public int TotalTrialsPerTest(clsTestTypes.enTestType TestTypeID)
         {
             return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+        public bool SetStatusCompleted()
+        {
+            return clsApplication.UpdateStatus(ApplicationID, (short)enApplicationStatus.Completed);
+        }
+
+        public int IssueLicense(string Note, int CreatedByUserID)
+        {
+            int DriverID;
+            if (!clsPerson.IsDriver(ApplicationPersonID))
+            {
+                clsDriver Driver = new clsDriver();
+                Driver.PersonID = ApplicationPersonID;
+                Driver.CreatedByUserID = CreatedByUserID;
+                if (!Driver.Save())
+                    return -1;
+                DriverID = Driver.DriverID;
+            }
+            else
+            {
+                DriverID = clsPerson.GetDriverIDByPersonID(ApplicationPersonID);
+            }
+            clsLicenses License = new clsLicenses();
+            License.ApplicationID = this.ApplicationID;
+            License.DriverID = DriverID;
+            License.LicenseClass = this.LicenseClassID;
+            License.IssueDate = DateTime.Now;
+            License.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.DefaultValidityLength);
+            License.Notes = Note;
+            License.PaidFees = this.LicenseClassInfo.ClassFees;
+            License.IsActive = true;
+            License.IssueReason = clsLicenses.enIssueReason.FirstTime;
+            License.CreatedByUserID = CreatedByUserID;
+
+            if (License.Save())
+            {
+                return SetStatusCompleted() ? License.LicenseID : -1;
+            }
+
+            return -1;
         }
     }
 }

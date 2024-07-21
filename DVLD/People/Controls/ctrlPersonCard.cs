@@ -8,9 +8,9 @@ namespace DVLD.People.Controls
 {
     public partial class ctrlPersonCard : UserControl
     {
-        private clsPersone _Person = null;
+        private clsPerson _Person = null;
         private int _ID = -1;
-        public clsPersone Person { get { return _Person; } }
+        public clsPerson Person { get { return _Person; } }
         public int ID { get { return _ID; } }
 
         public ctrlPersonCard()
@@ -45,7 +45,7 @@ namespace DVLD.People.Controls
         private void _SetLabelsValues()
         {
             lblPersonID.Text = _Person.PersonID.ToString();
-            lblFullName.Text = _Person.FirstaName + " " + _Person.SectoundName + " " + _Person.ThirdName + " " + _Person.LastaName;
+            lblFullName.Text = _Person.FirstName + " " + _Person.SecundName + " " + _Person.ThirdName + " " + _Person.LastName;
             lblDataOfBarith.Text = _Person.DataOfBirth.ToShortDateString();
             lblNationalNo.Text = _Person.NationalNo;
             lblNationality.Text = _Person.CountryInformation.CountryName;
@@ -58,7 +58,7 @@ namespace DVLD.People.Controls
 
         public void LoadPersonInformation(int ID)
         {
-            _Person = clsPersone.Find(ID);
+            _Person = clsPerson.Find(ID);
 
             if (_Person == null)
             {
@@ -71,7 +71,7 @@ namespace DVLD.People.Controls
 
         public void LoadPersonInformation(string NationalNo)
         {
-            _Person = clsPersone.Find(NationalNo);
+            _Person = clsPerson.Find(NationalNo);
 
             if (_Person == null)
             {
