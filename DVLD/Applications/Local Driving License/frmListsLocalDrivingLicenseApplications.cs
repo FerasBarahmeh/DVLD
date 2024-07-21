@@ -155,5 +155,15 @@ namespace DVLD.Applications.Local_Driving_License
         {
             _ScheduleTest(clsTestTypes.enTestType.VisionTest);
         }
+
+        private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestTypes.enTestType.WrittenTest);
+        }
+
+        private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestTypes.enTestType.StreetTest);
+        }
     }
 }

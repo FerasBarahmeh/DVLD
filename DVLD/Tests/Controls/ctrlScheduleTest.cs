@@ -73,8 +73,13 @@ namespace DVLD.Tests.Controls
             {
                 IsRetackSchedule = true;
                 gbRetackTestInfo.Enabled = true;
-                lblDLAppID.Text = clsApplicationType.Find(_LocalDrivingLicenseApplication.ApplicationTypeID).ApplicationTypeFees.ToString();
-                lblFeesRetackTest.Text = "";
+                lblDLAppID.Text = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
+                lblFeesRetackTest.Text = clsApplicationType.Find((int)clsApplication.enApplicationType.RetakeTest).ApplicationTypeFees.ToString();
+                float feesRetackTest = float.Parse(lblFeesRetackTest.Text);
+                float fees = float.Parse(lblFees.Text);
+                float totalFees = feesRetackTest + fees;
+
+                lblFeesTotal.Text = totalFees.ToString();
             }
             else
             {
@@ -91,8 +96,7 @@ namespace DVLD.Tests.Controls
             _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindLocalDrivingLicenseApplicationData(LocalDrivingLicenseApplicationID);
             if (_LocalDrivingLicenseApplication == null)
             {
-                MessageBox.Show("Error: No Local Driving License Application with ID = " + _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString(),
-               "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: No Local Driving License Application with ID = " + _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnSave.Enabled = false;
                 return;
             }
@@ -113,13 +117,12 @@ namespace DVLD.Tests.Controls
             }
 
             PrepareScheduleDateTimePicker();
-            _PrepareRetackTestInfoSection();
-
             lblLocalDrivingLicenseAppID.Text = LocalDrivingLicenseApplicationID.ToString();
             lblDrivingClass.Text = _LocalDrivingLicenseApplication.LicenseClassInfo.ClassName.ToString();
             lblFullName.Text = _LocalDrivingLicenseApplication.PersonFullName;
             lblFees.Text = clsTestTypes.FindFeesByID(_TestTypeID).ToString();
             lblTrial.Text = _LocalDrivingLicenseApplication.TotalTrialsPerTest(_TestTypeID).ToString();
+            _PrepareRetackTestInfoSection();
         }
 
         private bool _HandleIfIsRetackSchedule()

@@ -1,4 +1,5 @@
 ﻿using Business;
+using DVLD.Properties;
 using System.Data;
 using System.Windows.Forms;
 
@@ -9,12 +10,46 @@ namespace DVLD.Tests
         private DataTable _dtLicenseTestAppointments;
         private int _LocalDrivingLicenseApplicationID;
         private clsTestTypes.enTestType _TestType = clsTestTypes.enTestType.VisionTest;
+        public clsTestTypes.enTestType TestTypeID
+        {
+            get
+            {
+                return _TestType;
+            }
+            set
+            {
+                _TestType = value;
+                switch (_TestType)
+                {
+
+                    case clsTestTypes.enTestType.VisionTest:
+                        {
+                            lblTitle.Text = "Vision Test";
+                            pbTestTypeImage.Image = Resources.Vision_512;
+                            break;
+                        }
+
+                    case clsTestTypes.enTestType.WrittenTest:
+                        {
+                            lblTitle.Text = "Written Test";
+                            pbTestTypeImage.Image = Resources.Written_Test_512;
+                            break;
+                        }
+                    case clsTestTypes.enTestType.StreetTest:
+                        {
+                            lblTitle.Text = "Street Test";
+                            pbTestTypeImage.Image = Resources.driving_test_512;
+                            break;
+                        }
+                }
+            }
+        }
 
         public frmListTestAppointments(int LocalDrivingLicenseApplicationID, clsTestTypes.enTestType TestType)
         {
             InitializeComponent();
             _LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
-            _TestType = TestType;
+            this.TestTypeID = TestType;
             ctrlDrivingLicenseApplicationInfo.LoadDrivingLicenseInfo(_LocalDrivingLicenseApplicationID);
         }
 
@@ -39,9 +74,12 @@ namespace DVLD.Tests
 
         private void _SetStatusForOptionButtons()
         {
-            bool IsLocked = !(bool)dgvLicenseTestAppointments.CurrentRow.Cells[3].Value;
-            tsmiTackTest.Enabled = IsLocked;
-            tsmiEditTool.Enabled = IsLocked;
+            if (dgvLicenseTestAppointments.Rows.Count > 0)
+            {
+                bool IsLocked = !(bool)dgvLicenseTestAppointments.CurrentRow.Cells[3].Value;
+                tsmiTackTest.Enabled = IsLocked;
+                tsmiEditTool.Enabled = IsLocked;
+            }
         }
 
         private void frmListTestAppointments_Load(object sender, System.EventArgs e)
@@ -82,7 +120,6 @@ namespace DVLD.Tests
             frmScheduleTest frm = new frmScheduleTest(LastTest.TestAppointmentInfo.LocalDrivingLicenseApplicationID, _TestType);
             frm.ShowDialog();
             frmListTestAppointments_Load(null, null);
-
         }
 
         private void editToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -104,6 +141,7 @@ namespace DVLD.Tests
 
             frmTackTest frm = new frmTackTest(_LocalDrivingLicenseApplicationID, _TestType, AppointmentID);
             frm.ShowDialog();
+            frmListTestAppointments_Load(null, null);
         }
     }
 }

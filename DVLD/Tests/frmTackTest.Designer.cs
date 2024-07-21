@@ -139,6 +139,7 @@
             this.rbSuccess.Tag = "1";
             this.rbSuccess.Text = "Success";
             this.rbSuccess.UseVisualStyleBackColor = true;
+            this.rbSuccess.CheckedChanged += new System.EventHandler(this.rbSuccess_CheckedChanged);
             // 
             // rbFail
             // 
@@ -153,6 +154,7 @@
             this.rbFail.Tag = "0";
             this.rbFail.Text = "Fail";
             this.rbFail.UseVisualStyleBackColor = true;
+            this.rbFail.CheckedChanged += new System.EventHandler(this.rbFail_CheckedChanged);
             // 
             // frmTackTest
             // 

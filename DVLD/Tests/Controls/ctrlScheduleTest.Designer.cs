@@ -32,7 +32,7 @@
             this.dtpScheduleDate = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbRetackTestInfo = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblFeesTotal = new System.Windows.Forms.Label();
             this.lblTotalFees = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -131,7 +131,7 @@
             // gbRetackTestInfo
             // 
             this.gbRetackTestInfo.BackColor = System.Drawing.Color.White;
-            this.gbRetackTestInfo.Controls.Add(this.label3);
+            this.gbRetackTestInfo.Controls.Add(this.lblFeesTotal);
             this.gbRetackTestInfo.Controls.Add(this.lblTotalFees);
             this.gbRetackTestInfo.Controls.Add(this.pictureBox5);
             this.gbRetackTestInfo.Controls.Add(this.pictureBox6);
@@ -149,16 +149,16 @@
             this.gbRetackTestInfo.TabStop = false;
             this.gbRetackTestInfo.Text = "Retack Test Info";
             // 
-            // label3
+            // lblFeesTotal
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(175, 99);
-            this.label3.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 25);
-            this.label3.TabIndex = 172;
-            this.label3.Text = "[$$$]";
+            this.lblFeesTotal.AutoSize = true;
+            this.lblFeesTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFeesTotal.Location = new System.Drawing.Point(175, 99);
+            this.lblFeesTotal.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
+            this.lblFeesTotal.Name = "lblFeesTotal";
+            this.lblFeesTotal.Size = new System.Drawing.Size(62, 25);
+            this.lblFeesTotal.TabIndex = 172;
+            this.lblFeesTotal.Text = "[$$$]";
             // 
             // lblTotalFees
             // 
@@ -515,7 +515,7 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbTestTypeImage;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblFeesTotal;
         private System.Windows.Forms.Label lblTotalFees;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Button btnSave;
