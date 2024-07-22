@@ -1,4 +1,4 @@
-﻿using DVLD.Drivers;
+﻿using DVLD.Auth;
 using System;
 using System.Windows.Forms;
 
@@ -15,8 +15,8 @@ namespace DVLD
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Application.Run(new frmMain(new Auth.frmLogin()));
-            Application.Run(new frmListsDrivers());
+            Application.Run(new frmLogin());
+            //Application.Run(new frmListsDrivers());   
             //Application.Run(new frmListTestAppointments(50, Business.clsTestTypes.enTestType.VisionTest));
         }
     }

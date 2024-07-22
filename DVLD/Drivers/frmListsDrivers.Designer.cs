@@ -181,6 +181,7 @@
             this.Controls.Add(this.dgvDrivers);
             this.Controls.Add(this.pbDriverImage);
             this.Name = "frmListsDrivers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmListsDrivers";
             this.Load += new System.EventHandler(this.frmListsDrivers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDrivers)).EndInit();
