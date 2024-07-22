@@ -134,6 +134,29 @@ namespace Business
                     return "First Time";
             }
         }
+        public static clsLicenses Find(int LicenseID)
+        {
+            int ApplicationID = -1; int DriverID = -1; int LicenseClass = -1;
+            DateTime IssueDate = DateTime.Now; DateTime ExpirationDate = DateTime.Now;
+            string Notes = "";
+            float PaidFees = 0; bool IsActive = true; int CreatedByUserID = 1;
+            byte IssueReason = 1;
+            if (clsLicensesData.GetLicenseInfoByID(LicenseID, ref ApplicationID, ref DriverID, ref LicenseClass,
+            ref IssueDate, ref ExpirationDate, ref Notes,
+            ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID))
+
+                return new clsLicenses(LicenseID, ApplicationID, DriverID, LicenseClass,
+                                     IssueDate, ExpirationDate, Notes,
+                                     PaidFees, IsActive, (enIssueReason)IssueReason, CreatedByUserID);
+            else
+                return null;
+
+        }
+
+        public static bool IsPersonHasLicense(int PersonID, int LicenseClassID)
+        {
+            return clsLicensesData.IsPersonHasLicense(PersonID, LicenseClassID);
+        }
 
     }
 }

@@ -121,10 +121,6 @@ namespace Business
         {
             return clsLocalDrivingLicenseApplicationData.IsPassTestType(LocalDrivingLicenseApplicationID, TestTypeID);
         }
-        public bool HasLicense(int LicenseClassID)
-        {
-            return clsLocalDrivingLicenseApplicationData.HasLicense(this.LocalDrivingLicenseApplicationID, LicenseClassID);
-        }
 
         public int GetActiveLicenseID()
         {

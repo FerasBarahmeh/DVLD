@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIssueLicense));
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnIssue = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -38,18 +38,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnSave
+            // btnIssue
             // 
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(689, 541);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(131, 44);
-            this.btnSave.TabIndex = 204;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnIssue.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIssue.Image = global::DVLD.Properties.Resources.LocalDriving_License;
+            this.btnIssue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIssue.Location = new System.Drawing.Point(689, 541);
+            this.btnIssue.Name = "btnIssue";
+            this.btnIssue.Size = new System.Drawing.Size(131, 44);
+            this.btnIssue.TabIndex = 204;
+            this.btnIssue.Text = "Issue";
+            this.btnIssue.UseVisualStyleBackColor = true;
+            this.btnIssue.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -107,7 +107,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(978, 589);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnIssue);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.pictureBox1);
@@ -126,7 +126,7 @@
         #endregion
 
         private Applications.Local_Driving_License.Controls.ctrlDrivingLicenseApplicationInfo ctrlDrivingLicenseApplicationInfo1;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnIssue;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.PictureBox pictureBox1;

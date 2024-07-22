@@ -98,11 +98,23 @@
     <Compile Include="General Class\clsFormat.cs" />
     <Compile Include="General Class\clsValidation.cs" />
     <Compile Include="General Class\clsFilesHandler.cs" />
-    <Compile Include="License\frmIssueLicense.cs">
+    <Compile Include="License\Local License\Controls\ctrlDriverLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="License\Local License\Controls\ctrlDriverLicenseInfo.Designer.cs">
+      <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="License\Local License\frmIssueLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="License\frmIssueLicense.Designer.cs">
+    <Compile Include="License\Local License\frmIssueLicense.Designer.cs">
       <DependentUpon>frmIssueLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="License\Local License\frmLicenseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="License\Local License\frmLicenseInfo.Designer.cs">
+      <DependentUpon>frmLicenseInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="People\Controls\ctrlPersonCard.cs">
       <SubType>UserControl</SubType>
@@ -237,8 +249,14 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="License\frmIssueLicense.resx">
+    <EmbeddedResource Include="License\Local License\Controls\ctrlDriverLicenseInfo.resx">
+      <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License\Local License\frmIssueLicense.resx">
       <DependentUpon>frmIssueLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License\Local License\frmLicenseInfo.resx">
+      <DependentUpon>frmLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\Controls\ctrlPersonCard.resx">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>

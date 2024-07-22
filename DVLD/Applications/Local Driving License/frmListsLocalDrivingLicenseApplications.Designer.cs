@@ -286,7 +286,6 @@
             this.scheduleVisionTestToolStripMenuItem,
             this.scheduleWrittenTestToolStripMenuItem,
             this.scheduleStreetTestToolStripMenuItem});
-            this.stmiScheduleTests.Enabled = false;
             this.stmiScheduleTests.Image = global::DVLD.Properties.Resources.Schedule_Test_32;
             this.stmiScheduleTests.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.stmiScheduleTests.Name = "stmiScheduleTests";
@@ -346,6 +345,7 @@
             this.tsmiShowLicense.Name = "tsmiShowLicense";
             this.tsmiShowLicense.Size = new System.Drawing.Size(308, 38);
             this.tsmiShowLicense.Text = "Show &License";
+            this.tsmiShowLicense.Click += new System.EventHandler(this.tsmiShowLicense_Click);
             // 
             // toolStripSeparator6
             // 

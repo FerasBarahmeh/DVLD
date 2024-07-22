@@ -114,9 +114,15 @@ namespace DVLD.Applications.Local_Driving_License
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int ActiveApplicationID =
-                clsApplication.
-                GetActiveApplicationIDForLicenseClass(ctrlUserCardWithFilter.PersonID, clsApplication.enApplicationType.NewDrivingLicense, _LicenseClassID);
+            int PersonID = ctrlUserCardWithFilter.PersonID;
+            int ActiveApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(PersonID, clsApplication.enApplicationType.NewDrivingLicense, _LicenseClassID);
+
+            if (clsLicenses.IsPersonHasLicense(PersonID, _LicenseClassID))
+            {
+                MessageBox.Show($"Choose another License Class, the person {PersonID} has active license for this class", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbLicenseClass.Focus();
+                return;
+            }
 
             if (ActiveApplicationID != -1)
             {

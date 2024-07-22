@@ -5,6 +5,71 @@ namespace DVLD_DataAccess_Layer
 {
     public class clsLicensesData
     {
+        public static bool GetLicenseInfoByID(
+            int LicenseID,
+            ref int ApplicationID,
+            ref int DriverID,
+            ref int LicenseClass,
+            ref DateTime IssueDate,
+            ref DateTime ExpirationDate,
+            ref string Notes,
+            ref float PaidFees,
+            ref bool IsActive,
+            ref byte IssueReason,
+            ref int CreatedByUserID)
+        {
+            bool IsFound = false;
+
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * FROM Licenses WHERE LicenseID = @LicenseID";
+
+            SqlCommand command = new SqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+                    ApplicationID = (int)reader["ApplicationID"];
+                    DriverID = (int)reader["DriverID"];
+                    LicenseClass = (int)reader["LicenseClass"];
+                    IssueDate = (DateTime)reader["IssueDate"];
+                    ExpirationDate = (DateTime)reader["ExpirationDate"];
+
+                    if (reader["Notes"] == DBNull.Value)
+                        Notes = "";
+                    else
+                        Notes = (string)reader["Notes"];
+
+                    PaidFees = Convert.ToSingle(reader["PaidFees"]);
+                    IsActive = (bool)reader["IsActive"];
+                    IssueReason = (byte)reader["IssueReason"];
+                    CreatedByUserID = (int)reader["DriverID"];
+                }
+                else
+                {
+                    IsFound = false;
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return IsFound;
+        }
+
         public static int Insert(
             int ApplicationID,
             int DriverID,
@@ -189,6 +254,36 @@ namespace DVLD_DataAccess_Layer
 
 
             return LicenseID;
+        }
+
+        public static bool IsPersonHasLicense(int PersonID, int LicenseClassID)
+        {
+            bool IsFound = false;
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = @"
+                    SELECT HasLicense=1
+                    FROM Licenses
+                    INNER JOIN Drivers
+                    ON Licenses.DriverID = Drivers.DriverID
+                    WHERE Drivers.PersonID = @PersonID 
+                    AND Licenses.LicenseClass=@LicenseClassID;
+            ";
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
+            cmd.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+            try
+            {
+                conn.Open();
+                SqlDataReader Reader = cmd.ExecuteReader();
+                IsFound = Reader.HasRows;
+                Reader.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally { conn.Close(); }
+
+            return IsFound;
         }
     }
 }

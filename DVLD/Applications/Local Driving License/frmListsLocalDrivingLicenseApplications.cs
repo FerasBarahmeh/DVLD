@@ -1,5 +1,6 @@
 ﻿using Business;
 using DVLD.License;
+using DVLD.License.Local_License;
 using DVLD.Tests;
 using System;
 using System.Collections.Generic;
@@ -129,7 +130,7 @@ namespace DVLD.Applications.Local_Driving_License
             string ClassName = (string)dgvListLocalDrivingApplicationLicense.CurrentRow.Cells[1].Value;
             int LicenseClassID = clsLicenseClass.FindIDByName(ClassName);
             clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindLocalDrivingLicenseApplicationData(LocalDrivingLicenseID);
-            bool HasLicense = LocalDrivingLicenseApplication.HasLicense(LicenseClassID);
+            bool HasLicense = clsLicenses.IsPersonHasLicense(LocalDrivingLicenseApplication.ApplicationPersonID, LicenseClassID);
 
             bool PassVisionTest = clsLocalDrivingLicenseApplication.IsPassTestType(LocalDrivingLicenseID, (int)clsTestTypes.enTestType.VisionTest);
             bool PassWrittenTest = clsLocalDrivingLicenseApplication.IsPassTestType(LocalDrivingLicenseID, (int)clsTestTypes.enTestType.WrittenTest);
@@ -143,10 +144,11 @@ namespace DVLD.Applications.Local_Driving_License
                 scheduleWrittenTestToolStripMenuItem.Enabled = PassVisionTest && !PassWrittenTest;
                 scheduleStreetTestToolStripMenuItem.Enabled = PassVisionTest && PassWrittenTest && !PassStreetTest;
             }
+
             tsmiCancelApplicaiton.Enabled = !HasLicense;
             tsmiDeleteApplication.Enabled = !HasLicense;
             tsmiEdit.Enabled = !HasLicense;
-            tsmiIssueDrivingLicenseFirstTime.Enabled = !HasLicense;
+            tsmiIssueDrivingLicenseFirstTime.Enabled = !HasLicense && !stmiScheduleTests.Enabled; ;
             tsmiShowLicense.Enabled = HasLicense;
         }
 
@@ -178,6 +180,16 @@ namespace DVLD.Applications.Local_Driving_License
             frmIssueLicense frm = new frmIssueLicense(LocalDrivingLicenseID);
             frm.ShowDialog();
             _RefreshDGV();
+        }
+
+        private void tsmiShowLicense_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingLicenseID = (int)dgvListLocalDrivingApplicationLicense.CurrentRow.Cells[0].Value;
+            int LicenseID = clsLocalDrivingLicenseApplication.FindLocalDrivingLicenseApplicationData(LocalDrivingLicenseID).GetActiveLicenseID();
+
+            frmLicenseInfo frm = new frmLicenseInfo(LicenseID);
+            frm.LoadInformation();
+            frm.ShowDialog();
         }
     }
 }

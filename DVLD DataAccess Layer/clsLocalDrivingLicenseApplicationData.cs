@@ -175,57 +175,7 @@ namespace DVLD_DataAccess_Layer
             return Passed;
 
         }
-        public static bool HasLicense(int LocalDrivingLicenseApplicationID, int LicenseClassID)
-        {
-            bool Found = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"
-                SELECT 
-	                Found=1 
-                FROM 
-	                Applications
-                INNER JOIN 
-	                LocalDrivingLicenseApplications
-                ON 
-	                LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID
-                INNER JOIN 
-	                Licenses
-                ON 
-	                Licenses.ApplicationID = Applications.ApplicationID
-                WHERE 
-	                LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
-                AND 
-	                LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID;
-            ";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
-
-            try
-            {
-                connection.Open();
-
-                object result = command.ExecuteScalar();
-
-                if (result != null && int.TryParse(result.ToString(), out int returnedResult))
-                {
-                    Found = (returnedResult == 1);
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return Found;
-        }
         public static bool IsThereAnActiveScheduledTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
             bool Result = false;
