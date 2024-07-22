@@ -1,5 +1,6 @@
 ﻿using DVLD_DataAccess_Layer;
 using System;
+using System.Data;
 
 namespace Business
 {
@@ -158,5 +159,9 @@ namespace Business
             return clsLicensesData.IsPersonHasLicense(PersonID, LicenseClassID);
         }
 
+        public static DataTable GetLicenseByDriverID(int DriverID)
+        {
+            return clsLicensesData.GetLicenseByDriverID(DriverID);
+        }
     }
 }

@@ -32,7 +32,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbTestTypeImage = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlDriverLicenseInfo1 = new DVLD.License.Local_License.Controls.ctrlDriverLicenseInfo();
+            this.ctrlDriverLicenseInfo = new DVLD.License.Local_License.Controls.ctrlDriverLicenseInfo();
             ((System.ComponentModel.ISupportInitialize)(this.pbTestTypeImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +65,7 @@
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1068, 463);
+            this.btnClose.Location = new System.Drawing.Point(1067, 532);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(131, 44);
             this.btnClose.TabIndex = 204;
@@ -73,21 +73,22 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ctrlDriverLicenseInfo1
+            // ctrlDriverLicenseInfo
             // 
-            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(21, 182);
-            this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
-            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(1247, 384);
-            this.ctrlDriverLicenseInfo1.TabIndex = 138;
+            this.ctrlDriverLicenseInfo.Location = new System.Drawing.Point(21, 182);
+            this.ctrlDriverLicenseInfo.Name = "ctrlDriverLicenseInfo";
+            this.ctrlDriverLicenseInfo.Size = new System.Drawing.Size(1247, 384);
+            this.ctrlDriverLicenseInfo.TabIndex = 138;
             // 
             // frmLicenseInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1220, 530);
+            this.ClientSize = new System.Drawing.Size(1220, 591);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.ctrlDriverLicenseInfo1);
+            this.Controls.Add(this.ctrlDriverLicenseInfo);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbTestTypeImage);
             this.Name = "frmLicenseInfo";
@@ -102,7 +103,7 @@
 
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbTestTypeImage;
-        private Controls.ctrlDriverLicenseInfo ctrlDriverLicenseInfo1;
+        private Controls.ctrlDriverLicenseInfo ctrlDriverLicenseInfo;
         private System.Windows.Forms.Button btnClose;
     }
 }

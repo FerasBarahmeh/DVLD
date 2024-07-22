@@ -22,7 +22,7 @@ namespace DVLD.People.Controls
             {(int)_enFilterColumns.NationalNo, "National No" },
             {(int)_enFilterColumns.PersonID, "Person ID" },
         };
-        
+
         private void _FillFilterColumnsComboBox()
         {
             cbFilterColumns.DataSource = new BindingSource(_FilterColumns, null);
@@ -46,7 +46,7 @@ namespace DVLD.People.Controls
 
             _enFilterColumns SelectedFilterKey = (_enFilterColumns)cbFilterColumns.SelectedValue;
             if (SelectedFilterKey == _enFilterColumns.PersonID)
-                e.Handled = ! char.IsDigit(e.KeyChar) && ! char.IsControl(e.KeyChar);
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void cbFilterColumns_SelectedIndexChanged(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace DVLD.People.Controls
             txtFilterValue.Visible = true;
             txtFilterValue.Focus();
             txtFilterValue.Text = null;
-            
+
         }
 
         public void ResetLabelsPersonCard()
@@ -63,9 +63,9 @@ namespace DVLD.People.Controls
             ctrlPersoneCard.ResetLabels();
         }
 
-        public void LoadPersonalCardInformation(int PerosnID)
+        public void LoadPersonalCardInformation(int PersonID)
         {
-            ctrlPersoneCard.LoadPersonInformation(PerosnID);
+            ctrlPersoneCard.LoadPersonInformation(PersonID);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

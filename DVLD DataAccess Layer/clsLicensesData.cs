@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DVLD_DataAccess_Layer
@@ -284,6 +285,39 @@ namespace DVLD_DataAccess_Layer
             finally { conn.Close(); }
 
             return IsFound;
+        }
+
+        public static DataTable GetLicenseByDriverID(int DriverID)
+        {
+
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = @"
+                SELECT Licenses.ApplicationID, Licenses.LicenseID, LicenseClasses.ClassName, Licenses.IssueDate, Licenses.ExpirationDate, Licenses.IsActive
+                FROM Licenses 
+                INNER JOIN LicenseClasses
+                ON LicenseClasses.LicenseClassID = Licenses.LicenseClass
+                WHERE DriverID = @DriverID
+                ORDER BY Licenses.LicenseID DESC;
+            ";
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@DriverID", DriverID);
+            DataTable dt = new DataTable();
+            try
+            {
+                conn.Open();
+                SqlDataReader Reader = cmd.ExecuteReader();
+                if (Reader.HasRows) dt.Load(Reader);
+                Reader.Close();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error in render");
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return dt;
         }
     }
 }

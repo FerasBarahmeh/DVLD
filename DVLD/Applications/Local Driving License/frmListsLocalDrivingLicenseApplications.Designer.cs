@@ -359,6 +359,7 @@
             this.tsmiShowPersonLicenseHistory.Name = "tsmiShowPersonLicenseHistory";
             this.tsmiShowPersonLicenseHistory.Size = new System.Drawing.Size(308, 38);
             this.tsmiShowPersonLicenseHistory.Text = "Show Person License History";
+            this.tsmiShowPersonLicenseHistory.Click += new System.EventHandler(this.tsmiShowPersonLicenseHistory_Click);
             // 
             // frmListsLocalDrivingLicenseApplications
             // 

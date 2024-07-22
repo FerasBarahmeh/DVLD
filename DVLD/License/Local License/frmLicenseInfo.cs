@@ -12,9 +12,8 @@ namespace DVLD.License.Local_License
         }
         public void LoadInformation()
         {
-            ctrlDriverLicenseInfo1.LoadInformation(_LicenseID);
+            ctrlDriverLicenseInfo.LoadInformation(_LicenseID);
         }
-
         private void btnClose_Click(object sender, System.EventArgs e)
         {
             Close();

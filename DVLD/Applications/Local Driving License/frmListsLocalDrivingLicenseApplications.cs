@@ -122,6 +122,7 @@ namespace DVLD.Applications.Local_Driving_License
         {
             frmInsertUpdateLocalDrivingLicenseApplication frm = new frmInsertUpdateLocalDrivingLicenseApplication();
             frm.ShowDialog();
+            _RefreshDGV();
         }
 
         private void cmsApplications_Opening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -189,6 +190,14 @@ namespace DVLD.Applications.Local_Driving_License
 
             frmLicenseInfo frm = new frmLicenseInfo(LicenseID);
             frm.LoadInformation();
+            frm.ShowDialog();
+        }
+
+        private void tsmiShowPersonLicenseHistory_Click(object sender, EventArgs e)
+        {
+            string NationalNo = (string)dgvListLocalDrivingApplicationLicense.CurrentRow.Cells[2].Value;
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory();
+            frm.LoadLicenses(NationalNo);
             frm.ShowDialog();
         }
     }
