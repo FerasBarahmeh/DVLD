@@ -60,7 +60,7 @@
             // 
             // msMainMenue
             // 
-            this.msMainMenue.BackColor = System.Drawing.Color.Transparent;
+            this.msMainMenue.BackColor = System.Drawing.Color.White;
             this.msMainMenue.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.msMainMenue.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.applicationsToolStripMenuItem,
@@ -76,13 +76,14 @@
             // 
             // applicationsToolStripMenuItem
             // 
+            this.applicationsToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.applicationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.drivierToolStripMenuItem,
             this.manageApplicationToolStripMenuItem,
             this.detainLicensesToolStripMenuItem,
             this.manageApplicationTypesToolStripMenuItem,
             this.manageTestTypesToolStripMenuItem});
-            this.applicationsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.applicationsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.applicationsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("applicationsToolStripMenuItem.Image")));
             this.applicationsToolStripMenuItem.Name = "applicationsToolStripMenuItem";
             this.applicationsToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
@@ -230,7 +231,8 @@
             // 
             // pepoToolStripMenuItem
             // 
-            this.pepoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.pepoToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.pepoToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.pepoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pepoToolStripMenuItem.Image")));
             this.pepoToolStripMenuItem.Name = "pepoToolStripMenuItem";
             this.pepoToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
@@ -239,7 +241,7 @@
             // 
             // driversToolStripMenuItem
             // 
-            this.driversToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.driversToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.driversToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("driversToolStripMenuItem.Image")));
             this.driversToolStripMenuItem.Name = "driversToolStripMenuItem";
             this.driversToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
@@ -248,7 +250,7 @@
             // 
             // usersToolStripMenuItem
             // 
-            this.usersToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.usersToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.usersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usersToolStripMenuItem.Image")));
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
@@ -262,7 +264,7 @@
             this.changePasswordToolStripMenuItem,
             this.signOutToolStripMenuItem});
             this.accountSettingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountSettingsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.accountSettingsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.accountSettingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("accountSettingsToolStripMenuItem.Image")));
             this.accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
             this.accountSettingsToolStripMenuItem.Size = new System.Drawing.Size(157, 24);
@@ -296,6 +298,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::DVLD.Properties.Resources.IconLogo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -306,6 +309,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.msMainMenue.ResumeLayout(false);
             this.msMainMenue.PerformLayout();
             this.ResumeLayout(false);

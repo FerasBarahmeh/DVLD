@@ -163,5 +163,9 @@ namespace Business
         {
             return clsLicensesData.GetLicenseByDriverID(DriverID);
         }
+        public bool CanUpgradeToBeInternational()
+        {
+            return LicenseClass == 3;
+        }
     }
 }

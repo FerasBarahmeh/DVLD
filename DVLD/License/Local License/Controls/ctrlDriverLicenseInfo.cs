@@ -26,6 +26,7 @@ namespace DVLD.License.Local_License.Controls
 
         private void _SetImagePerson()
         {
+            if (_LicenseID == -1 || _License == null) return;
             if (_License.DriverInfo.PersonInfo.Gender == 1)
                 pbPersonImage.Image = Resources.Female_512;
             else
@@ -44,10 +45,11 @@ namespace DVLD.License.Local_License.Controls
 
         public void LoadInformation(int LicenseID)
         {
+
             _LicenseID = LicenseID;
             _License = clsLicenses.Find(_LicenseID);
             _SetImagePerson();
-
+            if (_License == null || _LicenseID == -1) return;
             lblClass.Text = _License.LicenseClassIfo.ClassName;
             lblFullName.Text = _License.DriverInfo.PersonInfo.FullName;
             lblLicenseID.Text = _License.LicenseID.ToString();
@@ -60,6 +62,25 @@ namespace DVLD.License.Local_License.Controls
             lblDateOfBirth.Text = _License.DriverInfo.PersonInfo.DataOfBirth.ToString("d");
             lblDriverID.Text = _License.DriverID.ToString();
             lblExpirationDate.Text = _License.ExpirationDate.ToString("D");
+            //lblIsDetained.Text = _License.
+        }
+        public void ResetLabel()
+        {
+            _LicenseID = -1;
+            _SetImagePerson();
+
+            lblClass.Text = "???";
+            lblFullName.Text = "???";
+            lblLicenseID.Text = "???";
+            lblNationalNo.Text = "???";
+            lblGendor.Text = "???";
+            lblIssueDate.Text = "???";
+            lblIssueReason.Text = "???";
+            lblNotes.Text = "???";
+            lblIsActive.Text = "???";
+            lblDateOfBirth.Text = "???";
+            lblDriverID.Text = "???";
+            lblExpirationDate.Text = "???";
             //lblIsDetained.Text = _License.
         }
     }

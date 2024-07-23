@@ -28,27 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlDriverLicenseInfo = new DVLD.License.Local_License.Controls.ctrlDriverLicenseInfo();
             this.gbFilters = new System.Windows.Forms.GroupBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtLicenseID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ctrlDriverLicenseInfo = new DVLD.License.Local_License.Controls.ctrlDriverLicenseInfo();
             this.gbFilters.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ctrlDriverLicenseInfo
-            // 
-            this.ctrlDriverLicenseInfo.Location = new System.Drawing.Point(3, 164);
-            this.ctrlDriverLicenseInfo.Name = "ctrlDriverLicenseInfo";
-            this.ctrlDriverLicenseInfo.Size = new System.Drawing.Size(1198, 347);
-            this.ctrlDriverLicenseInfo.TabIndex = 0;
             // 
             // gbFilters
             // 
             this.gbFilters.Controls.Add(this.btnFind);
             this.gbFilters.Controls.Add(this.txtLicenseID);
             this.gbFilters.Controls.Add(this.label1);
-            this.gbFilters.Location = new System.Drawing.Point(64, 63);
+            this.gbFilters.Location = new System.Drawing.Point(269, 4);
             this.gbFilters.Margin = new System.Windows.Forms.Padding(4);
             this.gbFilters.Name = "gbFilters";
             this.gbFilters.Padding = new System.Windows.Forms.Padding(4);
@@ -77,6 +70,7 @@
             this.txtLicenseID.Name = "txtLicenseID";
             this.txtLicenseID.Size = new System.Drawing.Size(285, 22);
             this.txtLicenseID.TabIndex = 17;
+            this.txtLicenseID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLicenseID_KeyPress);
             // 
             // label1
             // 
@@ -89,15 +83,23 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "LicenseID:";
             // 
+            // ctrlDriverLicenseInfo
+            // 
+            this.ctrlDriverLicenseInfo.Location = new System.Drawing.Point(3, 77);
+            this.ctrlDriverLicenseInfo.Name = "ctrlDriverLicenseInfo";
+            this.ctrlDriverLicenseInfo.Size = new System.Drawing.Size(1190, 347);
+            this.ctrlDriverLicenseInfo.TabIndex = 0;
+            // 
             // ctrlDriverLicenseInfoWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.gbFilters);
             this.Controls.Add(this.ctrlDriverLicenseInfo);
             this.Name = "ctrlDriverLicenseInfoWithFilter";
-            this.Size = new System.Drawing.Size(1326, 776);
+            this.Size = new System.Drawing.Size(1206, 427);
             this.gbFilters.ResumeLayout(false);
             this.gbFilters.PerformLayout();
             this.ResumeLayout(false);

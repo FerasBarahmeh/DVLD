@@ -71,21 +71,16 @@ namespace Business
         }
         public override bool Save()
         {
-            /**
-             Because of inheritance first we call the save method in the base class,
-             it will take care of adding all information to the application table.
-           */
             base.Mode = (clsApplication.enMode)Mode;
             if (!base.Save())
                 return false;
 
-            switch (Mode)
+            switch (_Mode)
             {
                 case enMode.Insert:
                     if (_Insert())
                     {
-
-                        Mode = enMode.Update;
+                        _Mode = enMode.Update;
                         return true;
                     }
                     else
