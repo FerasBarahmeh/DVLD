@@ -38,20 +38,20 @@
             this.lblLocalLicensesRecords = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvLocalLicensesHistory = new System.Windows.Forms.DataGridView();
+            this.cmsLocalLicenseOptinos = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.licenseDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbInternationalLicenses = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.lblInternationalLicensesRecords = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvInternationalLicensesHistory = new System.Windows.Forms.DataGridView();
-            this.cmsLocalLicenseOptinos = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.licenseDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tcDriverLicenses.SuspendLayout();
             this.tpLocalLicenses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicensesHistory)).BeginInit();
+            this.cmsLocalLicenseOptinos.SuspendLayout();
             this.tbInternationalLicenses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInternationalLicensesHistory)).BeginInit();
-            this.cmsLocalLicenseOptinos.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -68,7 +68,7 @@
             // 
             this.tcDriverLicenses.Controls.Add(this.tpLocalLicenses);
             this.tcDriverLicenses.Controls.Add(this.tbInternationalLicenses);
-            this.tcDriverLicenses.Location = new System.Drawing.Point(16, 36);
+            this.tcDriverLicenses.Location = new System.Drawing.Point(17, 40);
             this.tcDriverLicenses.Name = "tcDriverLicenses";
             this.tcDriverLicenses.SelectedIndex = 0;
             this.tcDriverLicenses.Size = new System.Drawing.Size(1032, 288);
@@ -146,6 +146,22 @@
             this.dgvLocalLicensesHistory.TabIndex = 132;
             this.dgvLocalLicensesHistory.TabStop = false;
             // 
+            // cmsLocalLicenseOptinos
+            // 
+            this.cmsLocalLicenseOptinos.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsLocalLicenseOptinos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.licenseDetailsToolStripMenuItem});
+            this.cmsLocalLicenseOptinos.Name = "cmsLocalLicenseOptinos";
+            this.cmsLocalLicenseOptinos.Size = new System.Drawing.Size(181, 30);
+            // 
+            // licenseDetailsToolStripMenuItem
+            // 
+            this.licenseDetailsToolStripMenuItem.Image = global::DVLD.Properties.Resources.License_View_32;
+            this.licenseDetailsToolStripMenuItem.Name = "licenseDetailsToolStripMenuItem";
+            this.licenseDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.licenseDetailsToolStripMenuItem.Text = "License Details";
+            this.licenseDetailsToolStripMenuItem.Click += new System.EventHandler(this.licenseDetailsToolStripMenuItem_Click);
+            // 
             // tbInternationalLicenses
             // 
             this.tbInternationalLicenses.Controls.Add(this.label3);
@@ -173,7 +189,7 @@
             // lblInternationalLicensesRecords
             // 
             this.lblInternationalLicensesRecords.AutoSize = true;
-            this.lblInternationalLicensesRecords.Location = new System.Drawing.Point(108, 218);
+            this.lblInternationalLicensesRecords.Location = new System.Drawing.Point(136, 225);
             this.lblInternationalLicensesRecords.Name = "lblInternationalLicensesRecords";
             this.lblInternationalLicensesRecords.Size = new System.Drawing.Size(21, 16);
             this.lblInternationalLicensesRecords.TabIndex = 138;
@@ -194,6 +210,7 @@
             this.dgvInternationalLicensesHistory.AllowUserToAddRows = false;
             this.dgvInternationalLicensesHistory.AllowUserToDeleteRows = false;
             this.dgvInternationalLicensesHistory.AllowUserToResizeRows = false;
+            this.dgvInternationalLicensesHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvInternationalLicensesHistory.BackgroundColor = System.Drawing.Color.White;
             this.dgvInternationalLicensesHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInternationalLicensesHistory.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -216,22 +233,6 @@
             this.dgvInternationalLicensesHistory.TabIndex = 136;
             this.dgvInternationalLicensesHistory.TabStop = false;
             // 
-            // cmsLocalLicenseOptinos
-            // 
-            this.cmsLocalLicenseOptinos.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsLocalLicenseOptinos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.licenseDetailsToolStripMenuItem});
-            this.cmsLocalLicenseOptinos.Name = "cmsLocalLicenseOptinos";
-            this.cmsLocalLicenseOptinos.Size = new System.Drawing.Size(215, 58);
-            // 
-            // licenseDetailsToolStripMenuItem
-            // 
-            this.licenseDetailsToolStripMenuItem.Image = global::DVLD.Properties.Resources.License_View_32;
-            this.licenseDetailsToolStripMenuItem.Name = "licenseDetailsToolStripMenuItem";
-            this.licenseDetailsToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
-            this.licenseDetailsToolStripMenuItem.Text = "License Details";
-            this.licenseDetailsToolStripMenuItem.Click += new System.EventHandler(this.licenseDetailsToolStripMenuItem_Click);
-            // 
             // ctrlDriverLicenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -245,10 +246,10 @@
             this.tpLocalLicenses.ResumeLayout(false);
             this.tpLocalLicenses.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicensesHistory)).EndInit();
+            this.cmsLocalLicenseOptinos.ResumeLayout(false);
             this.tbInternationalLicenses.ResumeLayout(false);
             this.tbInternationalLicenses.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInternationalLicensesHistory)).EndInit();
-            this.cmsLocalLicenseOptinos.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

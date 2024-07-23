@@ -25,22 +25,28 @@ namespace DVLD.License.Controls
             if (dgvLocalLicensesHistory.Rows.Count > 0)
             {
                 dgvLocalLicensesHistory.Columns[0].HeaderText = "Lic.ID";
-                dgvLocalLicensesHistory.Columns[0].Width = 110;
-
                 dgvLocalLicensesHistory.Columns[1].HeaderText = "App.ID";
-                dgvLocalLicensesHistory.Columns[1].Width = 110;
-
                 dgvLocalLicensesHistory.Columns[2].HeaderText = "Class Name";
-                dgvLocalLicensesHistory.Columns[2].Width = 270;
-
                 dgvLocalLicensesHistory.Columns[3].HeaderText = "Issue Date";
-                dgvLocalLicensesHistory.Columns[3].Width = 170;
-
                 dgvLocalLicensesHistory.Columns[4].HeaderText = "Expiration Date";
-                dgvLocalLicensesHistory.Columns[4].Width = 170;
-
                 dgvLocalLicensesHistory.Columns[5].HeaderText = "Is Active";
-                dgvLocalLicensesHistory.Columns[5].Width = 110;
+            }
+        }
+        private void _LoadInternationalsInfo()
+        {
+            _dtDriverInternationalLicensesHistory = clsInternationalLicense.GetDriverInternationalLicenses(_DriverID);
+
+            dgvInternationalLicensesHistory.DataSource = _dtDriverInternationalLicensesHistory;
+            lblInternationalLicensesRecords.Text = dgvInternationalLicensesHistory.Rows.Count.ToString();
+
+            if (dgvInternationalLicensesHistory.Rows.Count > 0)
+            {
+                dgvInternationalLicensesHistory.Columns[0].HeaderText = "Int.License ID";
+                dgvInternationalLicensesHistory.Columns[1].HeaderText = "Application ID";
+                dgvInternationalLicensesHistory.Columns[2].HeaderText = "L.License ID";
+                dgvInternationalLicensesHistory.Columns[3].HeaderText = "Issue Date";
+                dgvInternationalLicensesHistory.Columns[4].HeaderText = "Expiration Date";
+                dgvInternationalLicensesHistory.Columns[5].HeaderText = "Is Active";
             }
         }
 
@@ -49,6 +55,7 @@ namespace DVLD.License.Controls
             _Driver = clsDriver.FindByDriverID(DriverID);
             _DriverID = DriverID;
             _LoadLocalLicenseInfo();
+            _LoadInternationalsInfo();
         }
 
         public void LoadInformationByPersonID(int PersonID)
@@ -56,6 +63,7 @@ namespace DVLD.License.Controls
             _Driver = clsDriver.FindByPersonID(PersonID);
             _DriverID = _Driver.DriverID;
             _LoadLocalLicenseInfo();
+            _LoadInternationalsInfo();
         }
 
         private void licenseDetailsToolStripMenuItem_Click(object sender, System.EventArgs e)

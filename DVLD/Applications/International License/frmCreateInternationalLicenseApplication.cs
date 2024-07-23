@@ -1,5 +1,6 @@
 ﻿using Business;
 using DVLD.General_Class;
+using DVLD.License;
 using System;
 using System.Windows.Forms;
 
@@ -106,6 +107,18 @@ namespace DVLD.Applications.International_License
 
             MessageBox.Show($"Person {_Licenses.DriverInfo.PersonInfo.FullName} has a international license validate to 1 year", "Issued License", MessageBoxButtons.OK, MessageBoxIcon.Information);
             _FillInternationalApplicationSection();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (_Licenses == null)
+            {
+                MessageBox.Show("Select License", "Warring", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory();
+            frm.LoadLicenses(_Licenses.DriverInfo.PersonID);
+            frm.ShowDialog();
         }
     }
 }

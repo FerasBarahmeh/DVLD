@@ -58,6 +58,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnIssue = new System.Windows.Forms.Button();
             this.ctrlDriverLicenseInfoWithFilter = new DVLD.License.Local_License.Controls.ctrlDriverLicenseInfoWithFilter();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -405,6 +406,17 @@
             this.ctrlDriverLicenseInfoWithFilter.Size = new System.Drawing.Size(1222, 446);
             this.ctrlDriverLicenseInfoWithFilter.TabIndex = 125;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(15, 711);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(135, 16);
+            this.linkLabel1.TabIndex = 207;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Show History License";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // frmCreateInternationalLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -413,6 +425,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1463, 893);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnIssue);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
@@ -467,5 +480,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnIssue;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
