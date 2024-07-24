@@ -54,11 +54,11 @@ namespace DVLD.License.Local_License.Controls
             lblFullName.Text = _License.DriverInfo.PersonInfo.FullName;
             lblLicenseID.Text = _License.LicenseID.ToString();
             lblNationalNo.Text = _License.DriverInfo.PersonInfo.NationalNo;
-            lblGendor.Text = _License.DriverInfo.PersonInfo.Gender.ToString();
+            lblGendor.Text = _License.DriverInfo.PersonInfo.GenderName;
             lblIssueDate.Text = _License.IssueDate.ToString("D");
             lblIssueReason.Text = _License.IssueReason.ToString();
             lblNotes.Text = _License.Notes.ToString();
-            lblIsActive.Text = _License.IsActive.ToString();
+            lblIsActive.Text = _License.IsActiveText;
             lblDateOfBirth.Text = _License.DriverInfo.PersonInfo.DataOfBirth.ToString("d");
             lblDriverID.Text = _License.DriverID.ToString();
             lblExpirationDate.Text = _License.ExpirationDate.ToString("D");

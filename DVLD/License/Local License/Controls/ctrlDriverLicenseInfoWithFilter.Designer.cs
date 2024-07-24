@@ -87,7 +87,7 @@
             // 
             this.ctrlDriverLicenseInfo.AutoSize = true;
             this.ctrlDriverLicenseInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ctrlDriverLicenseInfo.Location = new System.Drawing.Point(6, 89);
+            this.ctrlDriverLicenseInfo.Location = new System.Drawing.Point(3, 89);
             this.ctrlDriverLicenseInfo.Name = "ctrlDriverLicenseInfo";
             this.ctrlDriverLicenseInfo.Size = new System.Drawing.Size(1216, 373);
             this.ctrlDriverLicenseInfo.TabIndex = 0;
@@ -97,11 +97,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.gbFilters);
             this.Controls.Add(this.ctrlDriverLicenseInfo);
             this.Name = "ctrlDriverLicenseInfoWithFilter";
-            this.Size = new System.Drawing.Size(1225, 465);
+            this.Size = new System.Drawing.Size(1222, 465);
             this.gbFilters.ResumeLayout(false);
             this.gbFilters.PerformLayout();
             this.ResumeLayout(false);

@@ -100,6 +100,12 @@
     <Compile Include="Applications\Renew License Application\frmRenewLicenseApplication.Designer.cs">
       <DependentUpon>frmRenewLicenseApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\ReplaceLostOrDamagedLicenseApplication\frmReplaceLostOrDamagedLicenseApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\ReplaceLostOrDamagedLicenseApplication\frmReplaceLostOrDamagedLicenseApplication.Designer.cs">
+      <DependentUpon>frmReplaceLostOrDamagedLicenseApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Auth\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Renew License Application\frmRenewLicenseApplication.resx">
       <DependentUpon>frmRenewLicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\ReplaceLostOrDamagedLicenseApplication\frmReplaceLostOrDamagedLicenseApplication.resx">
+      <DependentUpon>frmReplaceLostOrDamagedLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Auth\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

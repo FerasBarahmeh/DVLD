@@ -1,6 +1,7 @@
 ﻿using DVLD.Applications.International_License;
 using DVLD.Applications.Local_Driving_License;
 using DVLD.Applications.Renew_License_Application;
+using DVLD.Applications.ReplaceLostOrDamagedLicenseApplication;
 using DVLD.ApplicationTypes;
 using DVLD.Auth;
 using DVLD.Drivers;
@@ -98,6 +99,12 @@ namespace DVLD
         private void renewDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmRenewLicenseApplication frm = new frmRenewLicenseApplication();
+            frm.ShowDialog();
+        }
+
+        private void replacementForLostOrDamagedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReplaceLostOrDamagedLicenseApplication frm = new frmReplaceLostOrDamagedLicenseApplication();
             frm.ShowDialog();
         }
     }

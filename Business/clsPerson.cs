@@ -21,6 +21,21 @@ namespace Business
         public string NationalNo { get; set; }
         public DateTime DataOfBirth { get; set; }
         public short Gender { get; set; }
+        public string GenderName
+        {
+            get
+            {
+                switch (Gender)
+                {
+                    case 0:
+                        return "Male";
+                    case 1:
+                        return "Femail";
+                    default:
+                        return "None";
+                }
+            }
+        }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }

@@ -20,6 +20,21 @@ namespace Business
         public string Notes { set; get; }
         public float PaidFees { set; get; }
         public bool IsActive { set; get; }
+        public string IsActiveText
+        {
+            get
+            {
+                switch (IsActive)
+                {
+                    case true:
+                        return "Yes";
+                    case false:
+                        return "No";
+                    default:
+                        return "None";
+                }
+            }
+        }
         public enIssueReason IssueReason { set; get; }
         public string IssueReasonText
         {
@@ -206,6 +221,48 @@ namespace Business
             Deactivate();
 
             return NewLicense;
+        }
+        public clsLicenses Replacement(clsApplication.enApplicationType applicationType, int CreatedBy)
+        {
+            clsApplication Application = new clsApplication();
+
+            Application.ApplicationPersonID = this.DriverInfo.PersonID;
+            Application.ApplicationDate = DateTime.Now;
+            Application.ApplicationTypeID = (int)clsApplication.enApplicationType.RenewDrivingLicense;
+            Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            Application.LastStatusDate = DateTime.Now;
+            Application.PaidFees = clsApplicationType.Find((int)applicationType).ApplicationTypeFees;
+            Application.CreatedByUserID = CreatedBy;
+
+            if (!Application.Save())
+                return null;
+            clsLicenses NewLicense = new clsLicenses();
+
+            NewLicense.ApplicationID = Application.ApplicationID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.LicenseClass = this.LicenseClass;
+            NewLicense.IssueDate = DateTime.Now;
+
+            int DefaultValidityLength = this.LicenseClassIfo.DefaultValidityLength;
+
+            NewLicense.ExpirationDate = DateTime.Now.AddYears(DefaultValidityLength);
+            NewLicense.Notes = Notes;
+            NewLicense.PaidFees = this.LicenseClassIfo.ClassFees;
+            NewLicense.IsActive = true;
+            NewLicense.IssueReason =
+                (applicationType == clsApplication.enApplicationType.ReplaceDamagedDrivingLicense)
+                ? clsLicenses.enIssueReason.DamagedReplacement
+                : clsLicenses.enIssueReason.LostReplacement;
+
+
+            NewLicense.CreatedByUserID = CreatedBy;
+
+            if (!NewLicense.Save()) return null;
+
+            Deactivate();
+
+            return NewLicense;
+
         }
     }
 }
