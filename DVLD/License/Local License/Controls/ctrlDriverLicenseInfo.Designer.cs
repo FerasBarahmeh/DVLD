@@ -88,6 +88,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.lblIsDetained);
             this.groupBox1.Controls.Add(this.pictureBox12);
             this.groupBox1.Controls.Add(this.label11);
@@ -133,7 +134,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.groupBox1.Size = new System.Drawing.Size(1185, 335);
+            this.groupBox1.Size = new System.Drawing.Size(1204, 357);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Driver License Info";
@@ -574,7 +575,7 @@
             this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbPersonImage.Image = global::DVLD.Properties.Resources.Male_512;
             this.pbPersonImage.InitialImage = null;
-            this.pbPersonImage.Location = new System.Drawing.Point(1004, 26);
+            this.pbPersonImage.Location = new System.Drawing.Point(1023, 21);
             this.pbPersonImage.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.pbPersonImage.Name = "pbPersonImage";
             this.pbPersonImage.Size = new System.Drawing.Size(169, 169);
@@ -589,7 +590,7 @@
             this.AutoSize = true;
             this.Controls.Add(this.groupBox1);
             this.Name = "ctrlDriverLicenseInfo";
-            this.Size = new System.Drawing.Size(1198, 351);
+            this.Size = new System.Drawing.Size(1216, 373);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
@@ -607,6 +608,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

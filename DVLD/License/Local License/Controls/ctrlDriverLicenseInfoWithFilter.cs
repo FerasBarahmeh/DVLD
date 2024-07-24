@@ -22,7 +22,6 @@ namespace DVLD.License.Local_License.Controls
         public ctrlDriverLicenseInfoWithFilter()
         {
             InitializeComponent();
-            txtLicenseID.Focus();
         }
         public void LoadInformation(int LicenseID)
         {
@@ -41,7 +40,7 @@ namespace DVLD.License.Local_License.Controls
                 LicenseID = value;
                 _License = clsLicenses.Find(LicenseID);
             }
-
+            txtLicenseID.Text = "";
             LoadInformation(LicenseID);
             FoundedLicense?.Invoke(_License);
         }
@@ -49,7 +48,10 @@ namespace DVLD.License.Local_License.Controls
         {
             gbFilters.Enabled = false;
         }
-
+        public void FocusFilterInput()
+        {
+            txtLicenseID.Focus();
+        }
         private void txtLicenseID_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)

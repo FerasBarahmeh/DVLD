@@ -119,7 +119,7 @@
             this.tsmiPersonDetails.Name = "tsmiPersonDetails";
             this.tsmiPersonDetails.Size = new System.Drawing.Size(280, 38);
             this.tsmiPersonDetails.Text = "Show Person Details";
-            this.tsmiPersonDetails.Click += new System.EventHandler(this.PesonDetailsToolStripMenuItem_Click);
+            this.tsmiPersonDetails.Click += new System.EventHandler(this.PersonDetailsToolStripMenuItem_Click);
             // 
             // tsmiShowDetails
             // 

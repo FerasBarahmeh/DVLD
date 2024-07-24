@@ -39,11 +39,11 @@ namespace DVLD.Applications.International_License
         {
             frmCreateInternationalLicenseApplication frm = new frmCreateInternationalLicenseApplication();
             frm.ShowDialog();
-            //refresh
+            // Refresh
             frmListInternationalLicenseApplications_Load(null, null);
         }
 
-        private void PesonDetailsToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void PersonDetailsToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             int DriverID = (int)dgvInternationalLicenses.CurrentRow.Cells[2].Value;
             int PersonID = clsDriver.FindByDriverID(DriverID).PersonID;

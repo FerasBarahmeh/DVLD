@@ -167,5 +167,45 @@ namespace Business
         {
             return LicenseClass == 3;
         }
+        public bool Deactivate()
+        {
+            return (clsLicensesData.DeactivateLicense(this.LicenseID));
+        }
+        public clsLicenses RenewLicense(string Notes, int CreatedByUserID)
+        {
+            clsApplication Application = new clsApplication();
+
+            Application.ApplicationPersonID = this.DriverInfo.PersonID;
+            Application.ApplicationDate = DateTime.Now;
+            Application.ApplicationTypeID = (int)clsApplication.enApplicationType.RenewDrivingLicense;
+            Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            Application.LastStatusDate = DateTime.Now;
+            Application.PaidFees = clsApplicationType.Find((int)clsApplication.enApplicationType.RenewDrivingLicense).ApplicationTypeFees;
+            Application.CreatedByUserID = CreatedByUserID;
+
+            if (!Application.Save())
+                return null;
+            clsLicenses NewLicense = new clsLicenses();
+
+            NewLicense.ApplicationID = Application.ApplicationID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.LicenseClass = this.LicenseClass;
+            NewLicense.IssueDate = DateTime.Now;
+
+            int DefaultValidityLength = this.LicenseClassIfo.DefaultValidityLength;
+
+            NewLicense.ExpirationDate = DateTime.Now.AddYears(DefaultValidityLength);
+            NewLicense.Notes = Notes;
+            NewLicense.PaidFees = this.LicenseClassIfo.ClassFees;
+            NewLicense.IsActive = true;
+            NewLicense.IssueReason = clsLicenses.enIssueReason.Renew;
+            NewLicense.CreatedByUserID = CreatedByUserID;
+
+            if (!NewLicense.Save()) return null;
+
+            Deactivate();
+
+            return NewLicense;
+        }
     }
 }
