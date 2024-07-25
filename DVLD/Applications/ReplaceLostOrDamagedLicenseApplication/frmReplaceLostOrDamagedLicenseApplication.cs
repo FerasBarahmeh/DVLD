@@ -99,7 +99,6 @@ namespace DVLD.Applications.ReplaceLostOrDamagedLicenseApplication
             ctrlDriverLicenseInfoWithFilter1.DisabledFilterSection();
             gbReplacementFor.Enabled = false;
             MessageBox.Show($"Successfully Replacement License has ID {_NewLicense.LicenseID}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
         private void llShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

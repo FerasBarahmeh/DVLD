@@ -59,5 +59,11 @@ namespace DVLD.License.Local_License.Controls
                 btnFind.PerformClick();
             }
         }
+        public void Find(int LicenseID)
+        {
+            txtLicenseID.Text = LicenseID.ToString();
+            txtLicenseID.Enabled = false;
+            btnFind.PerformClick();
+        }
     }
 }
